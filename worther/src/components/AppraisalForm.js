@@ -73,6 +73,9 @@ class AppraisalForm extends React.Component {
               <option>5</option>
               <option>6</option>
               <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
             </Input>
           </FormGroup>
           <FormGroup>
@@ -90,6 +93,9 @@ class AppraisalForm extends React.Component {
               <option>5</option>
               <option>6</option>
               <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
             </Input>
           </FormGroup>
 
@@ -104,7 +110,7 @@ class AppraisalForm extends React.Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="imgFile">File</Label>
+            <Label for="imgFile">Image of Home</Label>
             <Input
               type="file"
               name="imgFile"

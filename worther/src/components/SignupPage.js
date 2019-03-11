@@ -1,8 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 
+//Import style libraries & components
 import styled from "styled-components";
 import { Button, Form, FormGroup, Label, Input, Row, Col } from "reactstrap";
 
+//Import action creators
+import { registerToServer } from "../actions";
+
+//Styled Components
 const Container = styled.div`
   width: 540px;
   margin: 50px auto;
@@ -15,6 +21,7 @@ const H1Style = styled.h1`
   margin-bottom: 50px;
 `;
 
+//Inline Styling
 const btn = { backgroundColor: "#95813B" };
 
 class SignupPage extends React.Component {
@@ -22,8 +29,9 @@ class SignupPage extends React.Component {
     super();
     this.state = {
       credentials: {
-        firstName: "",
-        lastName: "",
+        // firstName: "",
+        // lastName: "",
+        username: "",
         email: "",
         password: ""
       }
@@ -39,6 +47,13 @@ class SignupPage extends React.Component {
     });
   };
 
+  regsiter = e => {
+    e.preventDefault();
+    this.props.registerToServer(this.state.credentials).then(() => {
+      this.props.history.push("/appraisal-form");
+    });
+  };
+
   render() {
     return (
       <Container>
@@ -46,7 +61,7 @@ class SignupPage extends React.Component {
         <Form className="d-flex flex-column row-hl">
           <Row form>
             <Col md={6}>
-              <FormGroup>
+              {/* <FormGroup>
                 <Label for="firstName">First Name</Label>
                 <Input
                   type="text"
@@ -67,7 +82,7 @@ class SignupPage extends React.Component {
                   placeholder="Enter last name"
                   onChange={this.handleChange}
                 />
-              </FormGroup>
+              </FormGroup> */}
             </Col>
           </Row>
           <FormGroup>
@@ -77,6 +92,16 @@ class SignupPage extends React.Component {
               name="email"
               id="exampleEmail"
               placeholder="Enter email"
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleUserName">User Name</Label>
+            <Input
+              type="text"
+              name="exampleUserName"
+              id="exampleUserName"
+              placeholder="Enter username"
               onChange={this.handleChange}
             />
           </FormGroup>
@@ -97,4 +122,7 @@ class SignupPage extends React.Component {
     );
   }
 }
-export default SignupPage;
+export default connect(
+  null,
+  { registerToServer }
+)(SignupPage);
