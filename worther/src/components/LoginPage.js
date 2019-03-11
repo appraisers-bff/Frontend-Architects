@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 const H1Style = styled.h1`
-  font-size: 67px;
+  font-size: 52px;
   font-family: "PT Serif", serif;
   font-weight: bold;
   margin-bottom: 50px;
