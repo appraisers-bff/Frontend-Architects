@@ -1,5 +1,21 @@
 import React from "react";
-import { Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
+
+import styled from "styled-components";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+
+const Container = styled.div`
+  width: 540px;
+  margin: 50px auto;
+`;
+
+const H1Style = styled.h1`
+  font-size: 67px;
+  font-family: "PT Serif", serif;
+  font-weight: bold;
+  margin-bottom: 50px;
+`;
+
+const btn = { backgroundColor: "#95813B" };
 
 class LoginPage extends React.Component {
   constructor() {
@@ -10,8 +26,9 @@ class LoginPage extends React.Component {
   }
   render() {
     return (
-      <Col xl="6" md={{ size: 6, offset: 3 }}>
-        <Form class="mx-auto">
+      <Container>
+        <H1Style>Welcome back</H1Style>
+        <Form className="d-flex flex-column justify-content-center row-hl">
           <FormGroup>
             <Label for="exampleEmail">Email</Label>
             <Input
@@ -31,9 +48,9 @@ class LoginPage extends React.Component {
             />
           </FormGroup>
 
-          <Button>Submit</Button>
+          <Button style={btn}>SIGN IN</Button>
         </Form>
-      </Col>
+      </Container>
     );
   }
 }
