@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
+import AppraisalForm from "./components/AppraisalForm";
 import logo from "./images/logo.svg";
 
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
@@ -31,7 +32,7 @@ class App extends Component {
             </NavbarBrand>
             <Nav className="ml-auto">
               <NavItem>
-                <Link to="/" style={navLink}>
+                <Link to="/appraisal-form" style={navLink}>
                   APPRAISAL
                 </Link>
               </NavItem>
@@ -47,6 +48,7 @@ class App extends Component {
               </NavItem>
             </Nav>
           </Navbar>
+          <Route path="/appraisal-form" component={AppraisalForm} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
         </div>

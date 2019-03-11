@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
+//Styling used sylted-components
 const Container = styled.div`
   width: 540px;
   margin: 50px auto;
@@ -15,27 +16,42 @@ const H1Style = styled.h1`
   margin-bottom: 50px;
 `;
 
+//In-line styliing
 const btn = { backgroundColor: "#95813B" };
 
 class LoginPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: []
+      credentials: {
+        email: "",
+        password: ""
+      }
     };
   }
+
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
   render() {
     return (
       <Container>
         <H1Style>Welcome back</H1Style>
-        <Form className="d-flex flex-column justify-content-center row-hl">
+        <Form className="d-flex flex-column justify-content-center">
           <FormGroup>
             <Label for="exampleEmail">Email</Label>
             <Input
               type="email"
               name="email"
               id="exampleEmail"
-              placeholder="Email address"
+              placeholder="Enter email address"
+              onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
@@ -44,7 +60,8 @@ class LoginPage extends React.Component {
               type="password"
               name="password"
               id="examplePassword"
-              placeholder="Password"
+              placeholder="Enter password"
+              onChange={this.handleChange}
             />
           </FormGroup>
 

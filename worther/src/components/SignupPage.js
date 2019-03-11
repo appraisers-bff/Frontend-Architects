@@ -21,9 +21,24 @@ class SignupPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: []
+      credentials: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
+      }
     };
   }
+
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
   render() {
     return (
       <Container>
@@ -32,23 +47,25 @@ class SignupPage extends React.Component {
           <Row form>
             <Col md={6}>
               <FormGroup>
-                <Label for="exampleEmail">First Name</Label>
+                <Label for="firstName">First Name</Label>
                 <Input
-                  type="email"
-                  name="email"
-                  id="exampleEmail"
+                  type="text"
+                  name="firstName"
+                  id="firstName"
                   placeholder="Enter first name"
+                  onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label for="examplePassword">Last Name</Label>
+                <Label for="lastName">Last Name</Label>
                 <Input
-                  type="password"
-                  name="password"
-                  id="examplePassword"
+                  type="text"
+                  name="lastName"
+                  id="lastName"
                   placeholder="Enter last name"
+                  onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
@@ -60,6 +77,7 @@ class SignupPage extends React.Component {
               name="email"
               id="exampleEmail"
               placeholder="Enter email"
+              onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
@@ -69,6 +87,7 @@ class SignupPage extends React.Component {
               name="password"
               id="examplePassword"
               placeholder="Create password"
+              onChange={this.handleChange}
             />
           </FormGroup>
 
