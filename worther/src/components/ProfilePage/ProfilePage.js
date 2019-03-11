@@ -1,5 +1,6 @@
 import React from 'react';
 import HousesList from './HousesList';
+import styled from 'styled-components';
 
 const houses = [
     {"id":2,"first_name":"Rickert","last_name":"Sharville","email":"rsharville0@cisco.com","number_bedrooms":5,"number_bathrooms":1,"number_sq_ft":880007,"year_built":"12/1/1992","heating":true,"cooling":false},
@@ -14,11 +15,15 @@ const houses = [
     {"id":11,"first_name":"Audra","last_name":"Litherland","email":"alitherland9@github.io","number_bedrooms":14,"number_bathrooms":2,"number_sq_ft":972037,"year_built":"1/7/1977","heating":true,"cooling":true}
 ]
 
+const ProfileDiv = styled.div`
+    width: 100%;
+`;
+
 const ProfilePage = props => {
     return(
-        <div className="profile-page">
+        <ProfileDiv>
             <HousesList houses={houses} />
-        </div>
+        </ProfileDiv>
     );
 }
 
