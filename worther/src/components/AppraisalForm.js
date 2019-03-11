@@ -21,25 +21,51 @@ class AppraisalForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: []
+      homeInputs: {
+        selectCity: "Los Angeles",
+        numBedrooms: 1,
+        numBathrooms: 1,
+        squareFeet: "",
+        imgFile: ""
+      }
     };
   }
+
+  handleChange = e => {
+    this.setState({
+      homeInputs: {
+        ...this.state.homeInputs,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
   render() {
     return (
       <Container>
         <H1Style>Discover your home's worth today</H1Style>
         <Form className="d-flex flex-column justify-content-center">
           <FormGroup>
-            <Label for="exampleSelect">Select City in California</Label>
-            <Input type="select" name="select" id="exampleSelect">
+            <Label for="selectCity">Select City in California</Label>
+            <Input
+              type="select"
+              name="selectCity"
+              id="selectCity"
+              onChange={this.handleChange}
+            >
               <option>Los Angeles</option>
               <option>Orange</option>
               <option>Ventura</option>
             </Input>
           </FormGroup>
           <FormGroup>
-            <Label for="exampleSelect">Number of bedrooms</Label>
-            <Input type="select" name="select" id="exampleSelect">
+            <Label for="numBedrooms">Number of bedrooms</Label>
+            <Input
+              type="select"
+              name="numBedrooms"
+              id="numBedrooms"
+              onChange={this.handleChange}
+            >
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -50,8 +76,13 @@ class AppraisalForm extends React.Component {
             </Input>
           </FormGroup>
           <FormGroup>
-            <Label for="exampleSelect">Number of bathrooms</Label>
-            <Input type="select" name="select" id="exampleSelect">
+            <Label for="numBathrooms">Number of bathrooms</Label>
+            <Input
+              type="select"
+              name="numBathrooms"
+              id="numBathrooms"
+              onChange={this.handleChange}
+            >
               <option>1</option>
               <option>2</option>
               <option>3</option>
@@ -63,17 +94,23 @@ class AppraisalForm extends React.Component {
           </FormGroup>
 
           <FormGroup>
-            <Label for="sizeHome">Square Feet</Label>
+            <Label for="squareFeet">Square Feet</Label>
             <Input
               type="number"
-              name="size"
-              id="sizeHome"
+              name="squareFeet"
+              id="squareFeet"
               placeholder="Enter square feet"
+              onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleFile">File</Label>
-            <Input type="file" name="file" id="exampleFile" />
+            <Label for="imgFile">File</Label>
+            <Input
+              type="file"
+              name="imgFile"
+              id="imgFile"
+              onChange={this.handleChange}
+            />
             <FormText color="muted">
               This is some placeholder block-level help text for the above
               input. It's a bit lighter and easily wraps to a new line.
