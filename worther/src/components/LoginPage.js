@@ -1,24 +1,72 @@
 import React from "react";
-import { Col, Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { connect } from "react-redux";
+
+//Import action creators
+import { loginToServer } from "../actions";
+
+//Import styled components and react-strap
+import styled from "styled-components";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+
+//Styling used styled-components
+const Container = styled.div`
+  width: 540px;
+  margin: 50px auto;
+`;
+
+const H1Style = styled.h1`
+  font-size: 52px;
+  font-family: "PT Serif", serif;
+  font-weight: bold;
+  margin-bottom: 50px;
+`;
+
+//In-line styling
+const btn = { backgroundColor: "#95813B" };
 
 class LoginPage extends React.Component {
   constructor() {
     super();
     this.state = {
-      items: []
+      credentials: {
+        username: "",
+        password: ""
+      }
     };
   }
+
+  handleChange = e => {
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  login = e => {
+    e.preventDefault();
+    this.props.loginToServer(this.state.credentials).then(() => {
+      this.props.history.push("/appraisal-form");
+    });
+  };
+
   render() {
     return (
-      <Col xl="6" md={{ size: 6, offset: 3 }}>
-        <Form class="mx-auto">
+      <Container>
+        <H1Style>Welcome back</H1Style>
+        <Form
+          className="d-flex flex-column justify-content-center"
+          onSubmit={this.login}
+        >
           <FormGroup>
-            <Label for="exampleEmail">Email</Label>
+            <Label for="username">Username</Label>
             <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
-              placeholder="Email address"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username"
+              onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
@@ -27,14 +75,18 @@ class LoginPage extends React.Component {
               type="password"
               name="password"
               id="examplePassword"
-              placeholder="Password"
+              placeholder="Enter password"
+              onChange={this.handleChange}
             />
           </FormGroup>
 
-          <Button>Submit</Button>
+          <Button style={btn}>SIGN IN</Button>
         </Form>
-      </Col>
+      </Container>
     );
   }
 }
-export default LoginPage;
+export default connect(
+  null,
+  { loginToServer }
+)(LoginPage);

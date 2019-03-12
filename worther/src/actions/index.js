@@ -1,29 +1,38 @@
+import axios from "axios";
 
-export const FETCHING_USER = "FETCHING_USER";
-export const USER_FETCH_SUCCESS = "USER_FETCH_SUCCESS"
-export const USER_FETCH_FAILURE = "USER_FETCH_FAILURE";
+export const REGISTER_START = "REGISTER_START";
+export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+export const REGISTER_FAILURE = "REGISTER_FAILURE";
 
-export const ADD_HOME = "ADD_HOME";
-export const UPDATE_HOME = "UPDATE_HOME";
-export const DELETE_HOME = "DELETE_HOME";
+export const LOGIN_START = "LOGIN_START";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
-export const fetchingUser = () => {
-    return {
-        type: FETCHING_USER,
-        payload: "Currently fetching user."
-    };
-}
+export const registerToServer = creds => dispatch => {
+  dispatch({ type: REGISTER_START });
+  return axios
+    .post("http://localhost:5000/api/register", creds)
+    .then(res => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
+    .catch(err =>
+      dispatch({
+        type: REGISTER_FAILURE,
+        payload: "You have an error creating a user"
+      })
+    );
+};
 
-export const userFetchSuccess = () => {
-    return {
-        type: USER_FETCH_SUCCESS,
-        payload: "User fetched."
-    };
-}
-
-export const userFetchFailure = () => {
-    return {
-        type: USER_FETCH_FAILURE,
-        payload: "Could not fetch user."
-    };
-}
+export const loginToServer = creds => dispatch => {
+  dispatch({ type: LOGIN_START });
+  return axios
+    .post("http://localhost:5000/api/login", creds)
+    .then(res => {
+      localStorage.setItem("token", res.data.token);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
+    })
+    .catch(err =>
+      dispatch({
+        type: LOGIN_FAILURE,
+        payload: "You have an error logging in"
+      })
+    );
+};
