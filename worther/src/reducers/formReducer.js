@@ -4,25 +4,31 @@ import {
   REGISTER_FAILURE,
   LOGIN_START,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  APPRAISAL_START,
+  APPRAISAL_SUCCESS,
+  APPRAISAL_FAILURE
 } from "../actions";
 
 const initialState = {
   users: [],
   signingUp: false,
   loggingIn: false,
-  error: null
+  error: null,
+  submittingAppraisal: false
 };
 
-const signupReducer = (state = initialState, action) => {
+const formReducer = (state = initialState, action) => {
   console.log("in the reducer");
   switch (action.type) {
     case REGISTER_START:
       return {
         ...state,
         users: [],
+        house: {},
         signingUp: true,
         loggingIn: false,
+        submittingAppraisal: false,
         error: null
       };
 
@@ -32,6 +38,7 @@ const signupReducer = (state = initialState, action) => {
         users: action.payload,
         signingUp: false,
         loggingIn: false,
+        submittingAppraisal: false,
         error: null
       };
     case REGISTER_FAILURE:
@@ -40,6 +47,7 @@ const signupReducer = (state = initialState, action) => {
         users: [],
         signingUp: false,
         loggingIn: false,
+        submittingAppraisal: false,
         error: true
       };
 
@@ -49,6 +57,7 @@ const signupReducer = (state = initialState, action) => {
         users: [],
         signingUp: false,
         loggingIn: true,
+        submittingAppraisal: false,
         error: null
       };
 
@@ -58,6 +67,7 @@ const signupReducer = (state = initialState, action) => {
         users: action.payload,
         signingUp: false,
         loggingIn: false,
+        submittingAppraisal: false,
         error: null
       };
 
@@ -67,7 +77,39 @@ const signupReducer = (state = initialState, action) => {
         users: [],
         signingUp: false,
         loggingIn: false,
+        submittingAppraisal: false,
         error: true
+      };
+
+    case APPRAISAL_START:
+      return {
+        ...state,
+        users: [],
+        signingUp: false,
+        loggingIn: false,
+        submittingAppraisal: true,
+        error: null
+      };
+
+    case APPRAISAL_SUCCESS:
+      return {
+        ...state,
+        users: [],
+        signingUp: false,
+        loggingIn: false,
+        submittingAppraisal: false,
+        error: null,
+        house: action.payload
+      };
+
+    case APPRAISAL_FAILURE:
+      return {
+        ...state,
+        users: [],
+        signingUp: false,
+        loggingIn: false,
+        submittingAppraisal: false,
+        error: action.payload
       };
 
     default:
@@ -75,4 +117,4 @@ const signupReducer = (state = initialState, action) => {
   }
 };
 
-export default signupReducer;
+export default formReducer;
