@@ -29,8 +29,8 @@ class SignupPage extends React.Component {
     super();
     this.state = {
       credentials: {
-        // firstName: "",
-        // lastName: "",
+        first: "",
+        last: "",
         username: "",
         email: "",
         password: ""
@@ -63,12 +63,12 @@ class SignupPage extends React.Component {
         <Form className="d-flex flex-column row-hl" onSubmit={this.register}>
           <Row form>
             <Col md={6}>
-              {/* <FormGroup>
-                <Label for="firstName">First Name</Label>
+              <FormGroup>
+                <Label for="first">First Name</Label>
                 <Input
                   type="text"
-                  name="firstName"
-                  id="firstName"
+                  name="first"
+                  id="first"
                   placeholder="Enter first name"
                   onChange={this.handleChange}
                 />
@@ -76,15 +76,15 @@ class SignupPage extends React.Component {
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label for="lastName">Last Name</Label>
+                <Label for="last">Last Name</Label>
                 <Input
                   type="text"
-                  name="lastName"
-                  id="lastName"
+                  name="last"
+                  id="last"
                   placeholder="Enter last name"
                   onChange={this.handleChange}
                 />
-              </FormGroup> */}
+              </FormGroup>
             </Col>
           </Row>
           <FormGroup>
@@ -98,11 +98,11 @@ class SignupPage extends React.Component {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleUserName">User Name</Label>
+            <Label for="username">User Name</Label>
             <Input
               type="text"
-              name="exampleUserName"
-              id="exampleUserName"
+              name="username"
+              id="username"
               placeholder="Enter username"
               onChange={this.handleChange}
             />
