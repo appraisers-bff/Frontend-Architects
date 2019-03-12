@@ -1,5 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 
+//Import action creators
+import { loginToServer } from "../actions";
+
+//Import styled components and react-strap
 import styled from "styled-components";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
@@ -24,7 +29,7 @@ class LoginPage extends React.Component {
     super();
     this.state = {
       credentials: {
-        email: "",
+        username: "",
         password: ""
       }
     };
@@ -39,18 +44,26 @@ class LoginPage extends React.Component {
     });
   };
 
+  login = e => {
+    e.preventDefault();
+    this.props.loginToServer(this.state.credentials);
+  };
+
   render() {
     return (
       <Container>
         <H1Style>Welcome back</H1Style>
-        <Form className="d-flex flex-column justify-content-center">
+        <Form
+          className="d-flex flex-column justify-content-center"
+          onSubmit={this.login}
+        >
           <FormGroup>
-            <Label for="exampleEmail">Email</Label>
+            <Label for="username">Username</Label>
             <Input
-              type="email"
-              name="email"
-              id="exampleEmail"
-              placeholder="Enter email address"
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Enter username"
               onChange={this.handleChange}
             />
           </FormGroup>
@@ -71,4 +84,7 @@ class LoginPage extends React.Component {
     );
   }
 }
-export default LoginPage;
+export default connect(
+  null,
+  { loginToServer }
+)(LoginPage);
