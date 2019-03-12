@@ -1,0 +1,4 @@
+[build] 
+base="worther"
+publish="worther/build/"
+command="yarn build"

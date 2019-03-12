@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import { BrowserRouter as Router, Route, Link, NavLink } from "react-router-dom";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 
 //Import components & images
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import AppraisalForm from "./components/AppraisalForm";
+import ProfilePage from './components/ProfilePage/ProfilePage.js';
 import logo from "./images/logo.svg";
 
 //Stylesheet
@@ -29,6 +31,7 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
+
           <Navbar style={navBg} light expand="md">
             <img src={logo} alt="worther logo" style={logoStyle} />
             <NavbarBrand href="/" style={navBrand}>
@@ -55,6 +58,7 @@ class App extends Component {
           <Route path="/appraisal-form" component={AppraisalForm} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
+          <ProfilePage />
         </div>
       </Router>
     );
