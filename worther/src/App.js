@@ -57,7 +57,7 @@ class App extends Component {
           <Route path="/appraisal-form" component={AppraisalForm} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
-          <ProfilePage />
+          {/* <ProfilePage /> */}
         </div>
       </Router>
     );

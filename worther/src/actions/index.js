@@ -1,16 +1,21 @@
 import axios from "axios";
 
+//Action types for Signup page
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
 
+//Action types for Login page
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
+//Action types for Appraisal form
 export const APPRAISAL_START = "APPRAISAL_START";
 export const APPRAISAL_SUCCESS = "APPRAISAL_SUCCESS";
 export const APPRAISAL_FAILURE = "APPRAISAL_FAILURE";
+
+//Action creators
 
 export const appraiseToServer = homeInputs => dispatch => {
   dispatch({ type: APPRAISAL_START });
