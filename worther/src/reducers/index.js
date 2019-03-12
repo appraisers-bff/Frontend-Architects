@@ -1,9 +1,3 @@
-import {
-    FETCHING_USER,
-    USER_FETCH_SUCCESS,
-    USER_FETCH_FAILURE
-} from '../actions';
-
 
 const houses = [{"id":2,"first_name":"Rickert","last_name":"Sharville","email":"rsharville0@cisco.com","number_bedrooms":5,"number_bathrooms":1,"number_sq_ft":880007,"year_built":"12/1/1992","heating":true,"cooling":false},
 {"id":3,"first_name":"Sheilah","last_name":"Sheather","email":"ssheather1@irs.gov","number_bedrooms":1,"number_bathrooms":1,"number_sq_ft":679426,"year_built":"7/16/1971","heating":false,"cooling":false},
@@ -27,20 +21,20 @@ const initialState = {houses: houses,
 
 const reducer = (state=initialState, action) => {
     switch(action.type){
-        case FETCHING_USER:
-            return {
+        // case FETCHING_USER:
+        //     return {
                 
-            }
+        //     }
         
-        case USER_FETCH_SUCCESS:
-            return {
+        // case USER_FETCH_SUCCESS:
+        //     return {
 
-            }
+        //     }
         
-        case USER_FETCH_FAILURE:
-            return {
+        // case USER_FETCH_FAILURE:
+        //     return {
                 
-            }
+        //     }
 
         default:
             return state

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HouseDiv = styled.div`
-    width: 26%;
+    width: 20%;
     border: 1px solid lightgray;
     margin: 5% 30px;
     border-radius: 10px;
@@ -20,34 +20,26 @@ const HouseContentDiv = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: flex-start;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 `;
 
 const UpdateBtn = styled.button`
-    width: 50%;
-    border-bottom-left-radius: 10px;
+    width: 40%;
+    height: 37px;
+    margin-bottom: 20px;
     border: none;
-    border-right: 1px solid white;
-    background-color: #64668D;
+    border-radius: 5px;
+    background-color: #95813B;
     color: white;
 `;
 
 const DeleteBtn = styled.button`
-    width: 50%;
-    border-bottom-right-radius: 10px;
-    border: none;
-    border-left: 1px solid white;
-    background-color: #64668D;
-    color: white;
-`;
-
-const NewDeleteBtn = styled.button`
     text-align: center;
     height: 42px;
     width: 42px;
     border-radius: 50%;
-    border: 2px solid yellow;
-    color: yellow;
+    border: 2px solid #95813B;
+    color: #95813B;
     background-color: white;
     font-size: 1.8rem;
     font-weight: bold;
@@ -65,9 +57,10 @@ const House = props => {
     return(
         <HouseDiv>
             <ImgDiv>
-                <DoubleBorder><NewDeleteBtn>X</NewDeleteBtn></DoubleBorder>
+                <DoubleBorder><DeleteBtn>X</DeleteBtn></DoubleBorder>
             </ImgDiv>
             <HouseContentDiv>
+                <p>Address</p>
                 <p><strong>Year Built: </strong>{props.house.year_built}</p>
                 <p><strong>Square Feet: </strong>{props.house.number_sq_ft}</p>
                 <p><strong>Beds: </strong>{props.house.number_bedrooms}</p>
@@ -76,7 +69,6 @@ const House = props => {
                 <p><strong>Cooling: </strong>{props.house.cooling ? "Yes" : "No"}</p>
             </HouseContentDiv>
             <UpdateBtn>Update</UpdateBtn>
-            <DeleteBtn>Delete</DeleteBtn>
         </HouseDiv>
     );
 }
