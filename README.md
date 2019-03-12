@@ -1,6 +1,8 @@
 # Frontend-Architects
 
-App Flow:
+A Frontend for Worther App
+
+## App Flow:
 
 1. User first goes to marketing page.
 2. Link to React app from marketing page.
@@ -9,4 +11,17 @@ App Flow:
 5. User can save past home appraisal estimates.
 6. Login button will also be present on the home page and when user clicks on the button they are taken to a login form.
 
-##Technologies
+## Technologies
+
+- ReactJS
+- Redux
+- Bootstrap
+- Styled Components
+
+## Dependencies
+
+`yarn add react-router-dom` --to build Routes, import {BrowserRouter}
+`yarn add bootstrap reactstrap styled-components` --> to build components
+`yarn add redux` --> for async operations
+`yarn add react-redux`--> for provider & connect
+`yarn add axios` --> to build async operators

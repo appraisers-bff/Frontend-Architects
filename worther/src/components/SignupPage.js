@@ -12,6 +12,12 @@ import { registerToServer } from "../actions";
 const Container = styled.div`
   width: 540px;
   margin: 50px auto;
+
+  @media (max-width: 700px) {
+    width: 400px;
+    padding: 20px;
+    margin: 20px auto;
+  }
 `;
 
 const H1Style = styled.h1`

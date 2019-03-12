@@ -11,7 +11,8 @@ const initialState = {
   users: [],
   signingUp: false,
   loggingIn: false,
-  error: null
+  error: null,
+  submittingAppraisal: false
 };
 
 const signupReducer = (state = initialState, action) => {
