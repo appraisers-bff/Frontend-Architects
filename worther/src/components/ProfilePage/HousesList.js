@@ -13,7 +13,7 @@ const HousesList = props => {
     return(
         <HouseListDiv>
             {props.houses.map(house => 
-                <House house={house} />
+                <House key={house.id} house={house} />
             )}
         </HouseListDiv>
     );

@@ -19,9 +19,47 @@ const ProfileDiv = styled.div`
     width: 100%;
 `;
 
+const ProfileHeadingDiv = styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    padding: 0 3%;
+`;
+
+const GreetingsDiv = styled.div`
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: baseline;
+`;
+
+const Greetingh1 = styled.h1`
+    font-weight: bold;
+    margin: 0 15px 0 0;
+`;
+
+const Greetingh5 = styled.h5`
+    color: #64668D;
+`;
+
+const NewEstimateBtn = styled.button`
+    border-radius: 10px;
+    border: none;
+    background-color: #64668D;
+    color: white;
+`;
+
+
 const ProfilePage = props => {
     return(
         <ProfileDiv>
+            <ProfileHeadingDiv>
+                <GreetingsDiv>
+                    <Greetingh1>Hello, Jordan.</Greetingh1>
+                    <Greetingh5>See your saved home appraisals below.</Greetingh5>
+                </GreetingsDiv>
+                <NewEstimateBtn>New Home Estimate</NewEstimateBtn>
+            </ProfileHeadingDiv>
+            
             <HousesList houses={houses} />
         </ProfileDiv>
     );
