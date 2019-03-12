@@ -13,15 +13,20 @@ A Frontend for Worther App
 
 ## Technologies
 
-- ReactJS
+- JavaScript & ReactJS
 - Redux
 - Bootstrap
 - Styled Components
+- CSS
 
 ## Dependencies
 
 `yarn add react-router-dom` --to build Routes, import {BrowserRouter}
+
 `yarn add bootstrap reactstrap styled-components` --> to build components
+
 `yarn add redux` --> for async operations
+
 `yarn add react-redux`--> for provider & connect
+
 `yarn add axios` --> to build async operators
