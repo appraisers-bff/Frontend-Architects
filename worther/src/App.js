@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
+
+//Import components & images
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import AppraisalForm from "./components/AppraisalForm";
 import logo from "./images/logo.svg";
 
-import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
-
+//Stylesheet
 import "./App.css";
+
+//Inline Styles
 const navBrand = { fontFamily: "Nunito", color: "white", fontSize: "30px" };
 const navBg = { backgroundColor: "#262749" };
 const navLink = {
