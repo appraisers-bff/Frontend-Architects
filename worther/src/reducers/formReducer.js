@@ -25,6 +25,7 @@ const formReducer = (state = initialState, action) => {
       return {
         ...state,
         users: [],
+        house: {},
         signingUp: true,
         loggingIn: false,
         submittingAppraisal: false,
@@ -88,6 +89,27 @@ const formReducer = (state = initialState, action) => {
         loggingIn: false,
         submittingAppraisal: true,
         error: null
+      };
+
+    case APPRAISAL_SUCCESS:
+      return {
+        ...state,
+        users: [],
+        signingUp: false,
+        loggingIn: false,
+        submittingAppraisal: false,
+        error: null,
+        house: action.payload
+      };
+
+    case APPRAISAL_FAILURE:
+      return {
+        ...state,
+        users: [],
+        signingUp: false,
+        loggingIn: false,
+        submittingAppraisal: false,
+        error: action.payload
       };
 
     default:

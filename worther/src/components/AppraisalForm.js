@@ -1,4 +1,8 @@
 import React from "react";
+import { connect } from "react-redux";
+
+//Import action creator
+import { appraiseToServer } from "../actions";
 
 //Import styled components and react-strap
 import styled from "styled-components";
@@ -89,12 +93,20 @@ class AppraisalForm extends React.Component {
     });
   };
 
+  calcAppraisal = e => {
+    e.preventDefault();
+    this.props.appraiseToServer(this.state.homeInputs);
+  };
+
   render() {
     return (
       <BGContainer>
         <Container>
           <H1Style>Discover your home's worth today</H1Style>
-          <Form className="d-flex flex-column justify-content-center">
+          <Form
+            className="d-flex flex-column justify-content-center"
+            onSubmit={this.calcAppraisal}
+          >
             <FormGroup>
               <Label for="address">Address</Label>
               <Input
@@ -125,13 +137,7 @@ class AppraisalForm extends React.Component {
               <Col md={4}>
                 <FormGroup>
                   <Label for="state">State</Label>
-                  <Input
-                    type="text"
-                    name="state"
-                    id="state"
-                    // onChange={this.handleChange}
-                    value="CA"
-                  />
+                  <Input type="text" name="state" id="state" value="CA" />
                 </FormGroup>
               </Col>
               <Col md={2}>
@@ -276,4 +282,7 @@ class AppraisalForm extends React.Component {
     );
   }
 }
-export default AppraisalForm;
+export default connect(
+  null,
+  { appraiseToServer }
+)(AppraisalForm);

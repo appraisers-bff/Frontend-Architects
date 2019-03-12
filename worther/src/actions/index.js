@@ -20,14 +20,20 @@ export const APPRAISAL_FAILURE = "APPRAISAL_FAILURE";
 export const appraiseToServer = homeInputs => dispatch => {
   dispatch({ type: APPRAISAL_START });
   return axios
-    .post("", homeInputs)
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
+    .post(`https://worther.herokuapp.com/api/house`, homeInputs)
+    .then(res => dispatch({ type: APPRAISAL_SUCCESS, payload: res.data }))
+    .catch(err =>
+      dispatch({
+        type: APPRAISAL_FAILURE,
+        payload: "You have an error appraising"
+      })
+    );
 };
+
 export const registerToServer = creds => dispatch => {
   dispatch({ type: REGISTER_START });
   return axios
-    .post("http://localhost:5000/api/register", creds)
+    .post("https://worther.herokuapp.com/api/register", creds)
     .then(res => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
     .catch(err =>
       dispatch({
@@ -40,7 +46,7 @@ export const registerToServer = creds => dispatch => {
 export const loginToServer = creds => dispatch => {
   dispatch({ type: LOGIN_START });
   return axios
-    .post("http://localhost:5000/api/login", creds)
+    .post("https://worther.herokuapp.com/api/login", creds)
     .then(res => {
       localStorage.setItem("token", res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
