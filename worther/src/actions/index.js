@@ -19,7 +19,12 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const registerToServer = creds => dispatch => {
   dispatch({ type: REGISTER_START });
   return axios
-    .post("http://localhost:5000/api/register")
-    .then(res => console.log("Register response", res))
-    .catch(err => console.log(err));
+    .post("http://localhost:5000/api/register", creds)
+    .then(res => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
+    .catch(err =>
+      dispatch({
+        type: REGISTER_FAILURE,
+        payload: "You have an error creating a user"
+      })
+    );
 };

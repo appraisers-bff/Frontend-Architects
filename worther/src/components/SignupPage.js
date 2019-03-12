@@ -47,8 +47,9 @@ class SignupPage extends React.Component {
     });
   };
 
-  regsiter = e => {
+  register = e => {
     e.preventDefault();
+    console.log("test");
     this.props.registerToServer(this.state.credentials).then(() => {
       this.props.history.push("/appraisal-form");
     });
@@ -58,7 +59,7 @@ class SignupPage extends React.Component {
     return (
       <Container>
         <H1Style>Welcome to Worther</H1Style>
-        <Form className="d-flex flex-column row-hl">
+        <Form className="d-flex flex-column row-hl" onSubmit={this.register}>
           <Row form>
             <Col md={6}>
               {/* <FormGroup>
@@ -116,7 +117,9 @@ class SignupPage extends React.Component {
             />
           </FormGroup>
 
-          <Button style={btn}>SIGN UP</Button>
+          <Button type="submit" style={btn}>
+            SIGN UP
+          </Button>
         </Form>
       </Container>
     );
