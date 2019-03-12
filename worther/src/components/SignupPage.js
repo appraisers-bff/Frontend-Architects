@@ -50,10 +50,9 @@ class SignupPage extends React.Component {
   register = e => {
     e.preventDefault();
     console.log("test");
-    this.props.registerToServer(this.state.credentials);
-    // .then(() => {
-    //   this.props.history.push("/appraisal-form");
-    // });
+    this.props.registerToServer(this.state.credentials).then(() => {
+      this.props.history.push("/appraisal-form");
+    });
   };
 
   render() {

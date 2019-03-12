@@ -46,7 +46,9 @@ class LoginPage extends React.Component {
 
   login = e => {
     e.preventDefault();
-    this.props.loginToServer(this.state.credentials);
+    this.props.loginToServer(this.state.credentials).then(() => {
+      this.props.history.push("/appraisal-form");
+    });
   };
 
   render() {
