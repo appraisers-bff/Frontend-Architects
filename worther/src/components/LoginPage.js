@@ -8,7 +8,7 @@ import { loginToServer } from "../actions";
 import styled from "styled-components";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-//Styling used sylted-components
+//Styling used styled-components
 const Container = styled.div`
   width: 540px;
   margin: 50px auto;
@@ -21,7 +21,7 @@ const H1Style = styled.h1`
   margin-bottom: 50px;
 `;
 
-//In-line styliing
+//In-line styling
 const btn = { backgroundColor: "#95813B" };
 
 class LoginPage extends React.Component {

@@ -1,8 +1,10 @@
 import React from "react";
 
+//Import styled components and react-strap
 import styled from "styled-components";
 import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
 
+//Styling used styled-components
 const Container = styled.div`
   width: 540px;
   margin: 50px auto;
@@ -15,6 +17,7 @@ const H1Style = styled.h1`
   margin-bottom: 50px;
 `;
 
+//In-line styliing
 const btn = { backgroundColor: "#95813B" };
 
 class AppraisalForm extends React.Component {
