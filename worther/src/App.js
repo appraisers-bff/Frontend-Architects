@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PrivateRouteToForm from "./components/PrivateRouteToForm";
 
-
-import { BrowserRouter as Router, Route, Link, NavLink, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  NavLink,
+  Redirect
+} from "react-router-dom";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 
 //Import components & images
@@ -9,8 +16,8 @@ import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import AppraisalForm from "./components/AppraisalForm";
 
-import ProfilePage from './components/ProfilePage/ProfilePage';
-import ResultsPage from './components/ResultsPage';
+import ProfilePage from "./components/ProfilePage/ProfilePage";
+import ResultsPage from "./components/ResultsPage";
 import logo from "./images/logo.svg";
 
 //Stylesheet
@@ -30,10 +37,16 @@ const logoStyle = { marginRight: "15px" };
 //Use Link from ReactRouterDom to link nav bar links to different components
 
 //creating private route component
-const PrivateRoute = ({component: Component, ...rest}) => (
-  <Route {...rest} render={props =>
-      localStorage.getItem("token") ? (<Component {...props} />) : (<Redirect to="/login" /> )
-    } 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      localStorage.getItem("token") ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="/login" />
+      )
+    }
   />
 );
 
@@ -50,7 +63,7 @@ class App extends Component {
             <Nav className="ml-auto">
               <NavItem>
                 <Link to="/appraisal-form" style={navLink}>
-                  APPRAISAL
+                  GET ESTIMATE
                 </Link>
               </NavItem>
               <NavItem>
@@ -58,18 +71,32 @@ class App extends Component {
                   SIGN UP
                 </Link>
               </NavItem>
-              <NavItem>
-                <Link to="/login" style={navLink}>
-                  LOG IN
-                </Link>
-              </NavItem>
+              {/* <NavItem> */}
+              {localStorage.getItem("token") ? (
+                <NavItem>
+                  <Link to="/profile-page" style={navLink}>
+                    PROFILE
+                  </Link>
+                </NavItem>
+              ) : (
+                <NavItem>
+                  <Link to="/login" style={navLink}>
+                    LOG IN
+                  </Link>
+                </NavItem>
+              )}
+              {/* </NavItem> */}
             </Nav>
           </Navbar>
-
-          <Route path="/appraisal-form" component={AppraisalForm} />
+          {/* 
+          <Route path="/appraisal-form" component={AppraisalForm} /> */}
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
           <PrivateRoute path="/profile-page" component={ProfilePage} />
+          <PrivateRouteToForm
+            path="/appraisal-form"
+            component={AppraisalForm}
+          />
           <Route path="/result" component={ResultsPage} />
         </div>
       </Router>

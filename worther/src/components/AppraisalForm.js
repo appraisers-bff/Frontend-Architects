@@ -66,10 +66,11 @@ class AppraisalForm extends React.Component {
         zip: "",
         bed: 1,
         bath: 1,
-        stories: "",
-        garage: "",
+        stories: 1,
+        garage: 1,
         sqft: "",
-        pool: false
+        pool: false,
+        user_id: 1
         // imgFile: ""
       }
     };
@@ -137,7 +138,13 @@ class AppraisalForm extends React.Component {
               <Col md={4}>
                 <FormGroup>
                   <Label for="state">State</Label>
-                  <Input type="text" name="state" id="state" value="CA" />
+                  <Input
+                    type="text"
+                    name="state"
+                    id="state"
+                    value="CA"
+                    readOnly
+                  />
                 </FormGroup>
               </Col>
               <Col md={2}>
@@ -282,7 +289,13 @@ class AppraisalForm extends React.Component {
     );
   }
 }
+
+export const mstp = state => {
+  return {
+    user_id: state.user_id
+  };
+};
 export default connect(
-  null,
+  mstp,
   { appraiseToServer }
 )(AppraisalForm);

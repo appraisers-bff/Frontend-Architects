@@ -32,31 +32,38 @@ export const appraiseToServer = homeInputs => dispatch => {
 
 export const registerToServer = creds => dispatch => {
   dispatch({ type: REGISTER_START });
-  return axios
-//     .post("http://localhost:8000/api/register", creds)
-    .post("https://worther.herokuapp.com/api/register", creds)
-    .then(res => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
-    .catch(err =>
-      dispatch({
-        type: REGISTER_FAILURE,
-        payload: "You have an error creating a user"
+  return (
+    axios
+      //     .post("http://localhost:8000/api/register", creds)
+      .post("https://worther.herokuapp.com/api/register", creds)
+      .then(res => {
+        dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+        console.log(res.data);
       })
-    );
+      .catch(err =>
+        dispatch({
+          type: REGISTER_FAILURE,
+          payload: "You have an error creating a user"
+        })
+      )
+  );
 };
 
 export const loginToServer = creds => dispatch => {
   dispatch({ type: LOGIN_START });
-  return axios
-//     .post("http://localhost:8000/api/login", creds)
-    .post("https://worther.herokuapp.com/api/login", creds)
-    .then(res => {
-      localStorage.setItem("token", res.data.token);
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data });
-    })
-    .catch(err =>
-      dispatch({
-        type: LOGIN_FAILURE,
-        payload: "You have an error logging in"
+  return (
+    axios
+      //     .post("http://localhost:8000/api/login", creds)
+      .post("https://worther.herokuapp.com/api/login", creds)
+      .then(res => {
+        localStorage.setItem("token", res.data.token);
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data });
       })
-    );
+      .catch(err =>
+        dispatch({
+          type: LOGIN_FAILURE,
+          payload: "You have an error logging in"
+        })
+      )
+  );
 };
