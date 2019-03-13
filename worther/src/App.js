@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import { BrowserRouter as Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 
 //Import components & images
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import AppraisalForm from "./components/AppraisalForm";
-import ProfilePage from "./components/ProfilePage/ProfilePage.js";
+
+import ProfilePage from './components/ProfilePage/ProfilePage';
+import ResultsPage from './components/ResultsPage';
 import logo from "./images/logo.svg";
 
 //Stylesheet
@@ -25,6 +28,14 @@ const navLink = {
 const logoStyle = { marginRight: "15px" };
 
 //Use Link from ReactRouterDom to link nav bar links to different components
+
+//creating private route component
+const PrivateRoute = ({component: Component, ...rest}) => (
+  <Route {...rest} render={props =>
+      localStorage.getItem("token") ? (<Component {...props} />) : (<Redirect to="/login" /> )
+    } 
+  />
+);
 
 class App extends Component {
   render() {
@@ -54,10 +65,12 @@ class App extends Component {
               </NavItem>
             </Nav>
           </Navbar>
+
           <Route path="/appraisal-form" component={AppraisalForm} />
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
-          {/* <ProfilePage /> */}
+          <PrivateRoute path="/profile-page" component={ProfilePage} />
+          <Route path="/result" component={ResultsPage} />
         </div>
       </Router>
     );

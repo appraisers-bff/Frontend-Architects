@@ -33,6 +33,7 @@ export const appraiseToServer = homeInputs => dispatch => {
 export const registerToServer = creds => dispatch => {
   dispatch({ type: REGISTER_START });
   return axios
+//     .post("http://localhost:8000/api/register", creds)
     .post("https://worther.herokuapp.com/api/register", creds)
     .then(res => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
     .catch(err =>
@@ -46,6 +47,7 @@ export const registerToServer = creds => dispatch => {
 export const loginToServer = creds => dispatch => {
   dispatch({ type: LOGIN_START });
   return axios
+//     .post("http://localhost:8000/api/login", creds)
     .post("https://worther.herokuapp.com/api/login", creds)
     .then(res => {
       localStorage.setItem("token", res.data.token);

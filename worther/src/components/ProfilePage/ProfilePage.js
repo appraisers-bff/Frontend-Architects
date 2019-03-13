@@ -23,6 +23,7 @@ const ProfileHeadingDiv = styled.div`
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
+    margin: 30px 0 0 0;
     padding: 0 3%;
 `;
 
@@ -41,13 +42,6 @@ const Greetingh5 = styled.h5`
     color: #64668D;
 `;
 
-const NewEstimateBtn = styled.button`
-    border-radius: 10px;
-    border: none;
-    background-color: #64668D;
-    color: white;
-`;
-
 
 const ProfilePage = props => {
     return(
@@ -57,7 +51,6 @@ const ProfilePage = props => {
                     <Greetingh1>Hello, Jordan.</Greetingh1>
                     <Greetingh5>See your saved home appraisals below.</Greetingh5>
                 </GreetingsDiv>
-                <NewEstimateBtn>New Home Estimate</NewEstimateBtn>
             </ProfileHeadingDiv>
             
             <HousesList houses={houses} />

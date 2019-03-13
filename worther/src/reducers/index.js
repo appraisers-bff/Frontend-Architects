@@ -1,9 +1,3 @@
-// import {
-//     FETCHING_USER,
-//     USER_FETCH_SUCCESS,
-//     USER_FETCH_FAILURE
-// } from '../actions';
-
 const houses = [
   {
     id: 2,
