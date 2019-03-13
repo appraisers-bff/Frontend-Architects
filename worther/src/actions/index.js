@@ -20,8 +20,6 @@ export const APPRAISAL_START = "APPRAISAL_START";
 export const APPRAISAL_SUCCESS = "APPRAISAL_SUCCESS";
 export const APPRAISAL_FAILURE = "APPRAISAL_FAILURE";
 
-//Action creators
-
 export const appraiseToServer = homeInputs => dispatch => {
   dispatch({ type: APPRAISAL_START });
   return axios

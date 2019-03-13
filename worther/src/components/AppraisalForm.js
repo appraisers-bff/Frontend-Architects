@@ -20,21 +20,22 @@ import {
 import bgImg from "../images/form-house.jpg";
 
 //Styling used styled-components
-const BGContainer = styled.div`
-  background-image: url(${bgImg});
-  background-repeat: no-repeat;
-  background-position-y: 22%;
-  padding-top: 50px;
-  height: 1000px;
+// const BGContainer = styled.div`
+//   background-image: url(${bgImg});
+//   background-repeat: no-repeat;
+//   background-position-y: 22%;
+//   padding-top: 50px;
+//   height: 1000px;
 
-  @media (max-width: 800px) {
-    height: 1300px;
-    background-position-y: 0%;
-    padding-top: 10px;
-  }
-`;
+//   @media (max-width: 800px) {
+//     height: 1300px;
+//     background-position-y: 0%;
+//     padding-top: 10px;
+//   }
+// `;
 
 const Container = styled.div`
+  padding-top: 50px;
   width: 540px;
   margin: 0 auto;
   @media (max-width: 700px) {
@@ -100,174 +101,174 @@ class AppraisalForm extends React.Component {
 
   render() {
     return (
-      <BGContainer>
-        <Container>
-          <H1Style>Discover your home's worth today</H1Style>
-          <Form
-            className="d-flex flex-column justify-content-center"
-            onSubmit={this.calcAppraisal}
-          >
-            <FormGroup>
-              <Label for="address">Address</Label>
-              <Input
-                type="text"
-                name="address"
-                id="address"
-                placeholder="1234 Main St"
-                onChange={this.handleChange}
-              />
-            </FormGroup>
+      // <BGContainer>
+      <Container>
+        <H1Style>Discover your home's worth today</H1Style>
+        <Form
+          className="d-flex flex-column justify-content-center"
+          onSubmit={this.calcAppraisal}
+        >
+          <FormGroup>
+            <Label for="address">Address</Label>
+            <Input
+              type="text"
+              name="address"
+              id="address"
+              placeholder="1234 Main St"
+              onChange={this.handleChange}
+            />
+          </FormGroup>
 
-            <Row form>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="city">Select City</Label>
-                  <Input
-                    type="select"
-                    name="city"
-                    id="city"
-                    onChange={this.handleChange}
-                  >
-                    <option>Los Angeles</option>
-                    <option>Orange</option>
-                    <option>Ventura</option>
-                  </Input>
-                </FormGroup>
-              </Col>
-              <Col md={4}>
-                <FormGroup>
-                  <Label for="state">State</Label>
-                  <Input
-                    type="text"
-                    name="state"
-                    id="state"
-                    value="CA"
-                    readOnly
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={2}>
-                <FormGroup>
-                  <Label for="zip">Zip</Label>
-                  <Input
-                    type="number"
-                    name="zip"
-                    id="zip"
-                    onChange={this.handleChange}
-                  />
-                </FormGroup>
-              </Col>
-            </Row>
+          <Row form>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="city">Select City</Label>
+                <Input
+                  type="select"
+                  name="city"
+                  id="city"
+                  onChange={this.handleChange}
+                >
+                  <option>Los Angeles</option>
+                  <option>Orange</option>
+                  <option>Ventura</option>
+                </Input>
+              </FormGroup>
+            </Col>
+            <Col md={4}>
+              <FormGroup>
+                <Label for="state">State</Label>
+                <Input
+                  type="text"
+                  name="state"
+                  id="state"
+                  value="CA"
+                  readOnly
+                />
+              </FormGroup>
+            </Col>
+            <Col md={2}>
+              <FormGroup>
+                <Label for="zip">Zip</Label>
+                <Input
+                  type="number"
+                  name="zip"
+                  id="zip"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+            </Col>
+          </Row>
 
-            <Row form>
-              <Col md={3}>
-                <FormGroup>
-                  <Label for="bed">Bedrooms</Label>
-                  <Input
-                    type="select"
-                    name="bed"
-                    id="bed"
-                    onChange={this.handleChange}
-                  >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                  </Input>
-                </FormGroup>
-              </Col>
-              <Col md={3}>
-                <FormGroup>
-                  <Label for="bath">Bathrooms</Label>
-                  <Input
-                    type="select"
-                    name="bath"
-                    id="bath"
-                    onChange={this.handleChange}
-                  >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                    <option>8</option>
-                    <option>9</option>
-                    <option>10</option>
-                  </Input>
-                </FormGroup>
-              </Col>
-              <Col md={3}>
-                <FormGroup>
-                  <Label for="stories">Stories</Label>
-                  <Input
-                    type="select"
-                    name="stories"
-                    id="stories"
-                    onChange={this.handleChange}
-                  >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </Input>
-                </FormGroup>
-              </Col>
-              <Col md={3}>
-                <FormGroup>
-                  <Label for="garage">Garage Cars</Label>
-                  <Input
-                    type="select"
-                    name="garage"
-                    id="garage"
-                    onChange={this.handleChange}
-                  >
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                  </Input>
-                </FormGroup>
-              </Col>
-            </Row>
+          <Row form>
+            <Col md={3}>
+              <FormGroup>
+                <Label for="bed">Bedrooms</Label>
+                <Input
+                  type="select"
+                  name="bed"
+                  id="bed"
+                  onChange={this.handleChange}
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                </Input>
+              </FormGroup>
+            </Col>
+            <Col md={3}>
+              <FormGroup>
+                <Label for="bath">Bathrooms</Label>
+                <Input
+                  type="select"
+                  name="bath"
+                  id="bath"
+                  onChange={this.handleChange}
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                  <option>9</option>
+                  <option>10</option>
+                </Input>
+              </FormGroup>
+            </Col>
+            <Col md={3}>
+              <FormGroup>
+                <Label for="stories">Stories</Label>
+                <Input
+                  type="select"
+                  name="stories"
+                  id="stories"
+                  onChange={this.handleChange}
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </Input>
+              </FormGroup>
+            </Col>
+            <Col md={3}>
+              <FormGroup>
+                <Label for="garage">Garage Cars</Label>
+                <Input
+                  type="select"
+                  name="garage"
+                  id="garage"
+                  onChange={this.handleChange}
+                >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </Input>
+              </FormGroup>
+            </Col>
+          </Row>
 
-            <Row form>
-              <Col md={6}>
-                <FormGroup>
-                  <Label for="sqft">Square Feet</Label>
-                  <Input
-                    type="number"
-                    name="sqft"
-                    id="sqft"
-                    placeholder="Enter square feet"
-                    onChange={this.handleChange}
-                  />
-                </FormGroup>
-              </Col>
+          <Row form>
+            <Col md={6}>
+              <FormGroup>
+                <Label for="sqft">Square Feet</Label>
+                <Input
+                  type="number"
+                  name="sqft"
+                  id="sqft"
+                  placeholder="Enter square feet"
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+            </Col>
 
-              <Col md={3}>
-                <FormGroup style={poolStyle}>
-                  <Input
-                    type="checkbox"
-                    name="pool"
-                    id="pool"
-                    onChange={this.handleSelect}
-                  />
-                  <Label for="pool">Pool</Label>
-                </FormGroup>
-              </Col>
-            </Row>
+            <Col md={3}>
+              <FormGroup style={poolStyle}>
+                <Input
+                  type="checkbox"
+                  name="pool"
+                  id="pool"
+                  onChange={this.handleSelect}
+                />
+                <Label for="pool">Pool</Label>
+              </FormGroup>
+            </Col>
+          </Row>
 
-            {/* <FormGroup>
+          {/* <FormGroup>
             <Label for="imgFile">Image of Home</Label>
             <Input
               type="file"
@@ -281,10 +282,10 @@ class AppraisalForm extends React.Component {
             </FormText>
           </FormGroup> */}
 
-            <Button style={btn}>CALCULATE</Button>
-          </Form>
-        </Container>
-      </BGContainer>
+          <Button style={btn}>CALCULATE</Button>
+        </Form>
+      </Container>
+      // </BGContainer>
     );
   }
 }
