@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+
 import { BrowserRouter as Router, Route, Link, NavLink, Redirect } from "react-router-dom";
 import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 
@@ -7,6 +8,7 @@ import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import AppraisalForm from "./components/AppraisalForm";
+
 import ProfilePage from './components/ProfilePage/ProfilePage';
 import ResultsPage from './components/ResultsPage';
 import logo from "./images/logo.svg";
@@ -40,7 +42,6 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-
           <Navbar style={navBg} light expand="md">
             <img src={logo} alt="worther logo" style={logoStyle} />
             <NavbarBrand href="/" style={navBrand}>

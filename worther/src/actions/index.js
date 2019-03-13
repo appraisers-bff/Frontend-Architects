@@ -1,17 +1,44 @@
 import axios from "axios";
 
+//Action types for Signup page
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
 
+//Action types for Login page
 export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
+//Action types for Appraisal form
+export const APPRAISAL_START = "APPRAISAL_START";
+export const APPRAISAL_SUCCESS = "APPRAISAL_SUCCESS";
+export const APPRAISAL_FAILURE = "APPRAISAL_FAILURE";
+
+//Action creators
+
+export const appraiseToServer = homeInputs => dispatch => {
+  dispatch({ type: APPRAISAL_START });
+  return axios
+    .post(`https://worther.herokuapp.com/api/house`, homeInputs)
+    .then(res => dispatch({ type: APPRAISAL_SUCCESS, payload: res.data }))
+    .catch(err =>
+      dispatch({
+        type: APPRAISAL_FAILURE,
+        payload: "You have an error appraising"
+      })
+    );
+};
+
 export const registerToServer = creds => dispatch => {
   dispatch({ type: REGISTER_START });
   return axios
+<<<<<<< HEAD
     .post("http://localhost:6000/api/register", creds)
+=======
+//     .post("http://localhost:8000/api/register", creds)
+    .post("https://worther.herokuapp.com/api/register", creds)
+>>>>>>> af730cd6411d33fab50d00cd775ff6892cdcbc95
     .then(res => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
     .catch(err =>
       dispatch({
@@ -24,7 +51,12 @@ export const registerToServer = creds => dispatch => {
 export const loginToServer = creds => dispatch => {
   dispatch({ type: LOGIN_START });
   return axios
+<<<<<<< HEAD
     .post("http://localhost:6000/api/login", creds)
+=======
+//     .post("http://localhost:8000/api/login", creds)
+    .post("https://worther.herokuapp.com/api/login", creds)
+>>>>>>> af730cd6411d33fab50d00cd775ff6892cdcbc95
     .then(res => {
       localStorage.setItem("token", res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });

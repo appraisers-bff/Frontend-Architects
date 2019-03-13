@@ -8,10 +8,18 @@ import { loginToServer } from "../actions";
 import styled from "styled-components";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
+import bgImg from "../images/form-house.jpg";
+
 //Styling used styled-components
 const Container = styled.div`
   width: 540px;
   margin: 50px auto;
+
+  @media (max-width: 700px) {
+    width: 400px;
+    padding: 20px;
+    margin: 20px auto;
+  }
 `;
 
 const H1Style = styled.h1`
@@ -21,8 +29,22 @@ const H1Style = styled.h1`
   margin-bottom: 50px;
 `;
 
+const BGContainer = styled.div`
+  background-image: url(${bgImg});
+  background-repeat: no-repeat;
+  background-position-y: 22%;
+  padding-top: 50px;
+  height: 1000px;
+
+  @media (max-width: 700px) {
+    height: 1500px;
+    background-position-y: 0%;
+    padding-top: 10px;
+  }
+`;
+
 //In-line styling
-const btn = { backgroundColor: "#95813B" };
+const btn = { backgroundColor: "#95813B", border: "none" };
 
 class LoginPage extends React.Component {
   constructor() {
@@ -53,36 +75,38 @@ class LoginPage extends React.Component {
 
   render() {
     return (
-      <Container>
-        <H1Style>Welcome back</H1Style>
-        <Form
-          className="d-flex flex-column justify-content-center"
-          onSubmit={this.login}
-        >
-          <FormGroup>
-            <Label for="username">Username</Label>
-            <Input
-              type="text"
-              name="username"
-              id="username"
-              placeholder="Enter username"
-              onChange={this.handleChange}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for="examplePassword">Password</Label>
-            <Input
-              type="password"
-              name="password"
-              id="examplePassword"
-              placeholder="Enter password"
-              onChange={this.handleChange}
-            />
-          </FormGroup>
+      <BGContainer>
+        <Container>
+          <H1Style>Welcome back</H1Style>
+          <Form
+            className="d-flex flex-column justify-content-center"
+            onSubmit={this.login}
+          >
+            <FormGroup>
+              <Label for="username">Username</Label>
+              <Input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Enter username"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for="examplePassword">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="examplePassword"
+                placeholder="Enter password"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
 
-          <Button style={btn}>SIGN IN</Button>
-        </Form>
-      </Container>
+            <Button style={btn}>SIGN IN</Button>
+          </Form>
+        </Container>
+      </BGContainer>
     );
   }
 }
