@@ -27,13 +27,12 @@ const formReducer = (state = initialState, action) => {
     case REGISTER_START:
       return {
         ...state,
-        registeredUser: {},
+        registeredUser: null,
         user_id: null,
         signingUp: true,
-        loggingIn: false,
         user_token: localStorage.getItem("token"),
         submittingAppraisal: false,
-        house: {},
+        house: null,
         error: null
       };
 
@@ -50,8 +49,8 @@ const formReducer = (state = initialState, action) => {
     case REGISTER_FAILURE:
       return {
         ...state,
-        registeredUser: {},
-        user_id: "",
+        registeredUser: null,
+        user_id: null,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,
@@ -61,8 +60,8 @@ const formReducer = (state = initialState, action) => {
     case LOGIN_START:
       return {
         ...state,
-        registeredUser: {},
-        user_id: initialState.user_id,
+        registeredUser: null,
+        user_id: null,
         signingUp: false,
         loggingIn: true,
         submittingAppraisal: false,
@@ -72,8 +71,8 @@ const formReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        registeredUser: {},
-        user_id: null,
+        registeredUser: null,
+        user_id: action.payload.id,
         signingUp: false,
         loggingIn: false,
         user_token: action.payload.token,
@@ -84,8 +83,7 @@ const formReducer = (state = initialState, action) => {
     case LOGIN_FAILURE:
       return {
         ...state,
-        registeredUser: {},
-        user_id: initialState.user_id,
+        registeredUser: null,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,
@@ -94,24 +92,22 @@ const formReducer = (state = initialState, action) => {
 
     case APPRAISAL_START:
       return {
-        ...state,
-        registeredUser: {},
-        user_id: initialState.user_id,
-        signingUp: false,
-        loggingIn: false,
-        submittingAppraisal: true,
-        error: null
+        ...state
+        // registeredUser: {},
+        // signingUp: false,
+        // loggingIn: false,
+        // submittingAppraisal: true,
+        // error: null
       };
 
     case APPRAISAL_SUCCESS:
       return {
         ...state,
-        registeredUser: {},
-        user_id: initialState.user_id,
-        signingUp: false,
-        loggingIn: false,
-        submittingAppraisal: false,
-        error: null,
+        // registeredUser: {},
+        // signingUp: false,
+        // loggingIn: false,
+        // submittingAppraisal: false,
+        // error: null,
         house: action.payload
       };
 
@@ -119,7 +115,6 @@ const formReducer = (state = initialState, action) => {
       return {
         ...state,
         registeredUser: {},
-        user_id: initialState.user_id,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,

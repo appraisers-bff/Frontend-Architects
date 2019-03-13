@@ -12,7 +12,7 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
+  // FormText,
   Row,
   Col
 } from "reactstrap";
@@ -56,8 +56,8 @@ const btn = { backgroundColor: "#95813B", border: "none" };
 const poolStyle = { marginTop: "30px" };
 
 class AppraisalForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       homeInputs: {
         address: "",
@@ -70,7 +70,7 @@ class AppraisalForm extends React.Component {
         garage: 1,
         sqft: "",
         pool: false,
-        user_id: 1
+        user_id: props.user_id
         // imgFile: ""
       }
     };
@@ -292,7 +292,7 @@ class AppraisalForm extends React.Component {
 
 export const mstp = state => {
   return {
-    user_id: state.user_id
+    user_id: state.form.user_id
   };
 };
 export default connect(
