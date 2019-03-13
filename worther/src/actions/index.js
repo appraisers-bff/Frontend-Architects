@@ -10,6 +10,11 @@ export const LOGIN_START = "LOGIN_START";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
+//Action types for Logout
+export const LOGOUT_START = "LOGOUT_START";
+export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
+export const LOGOUT_FAILURE = "LOGOUT_FAILURE";
+
 //Action types for Appraisal form
 export const APPRAISAL_START = "APPRAISAL_START";
 export const APPRAISAL_SUCCESS = "APPRAISAL_SUCCESS";
@@ -66,4 +71,10 @@ export const loginToServer = creds => dispatch => {
         })
       )
   );
+};
+
+export const logoutToServer = () => dispatch => {
+  dispatch({ type: LOGOUT_START });
+  localStorage.removeItem("token");
+  dispatch({ type: LOGOUT_SUCCESS });
 };

@@ -8,16 +8,7 @@ import {
   Redirect
 } from "react-router-dom";
 
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem
-} from "reactstrap";
+import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 
 //Import components & images
 import LoginPage from "./components/LoginPage";
@@ -30,6 +21,9 @@ import logo from "./images/logo.svg";
 
 import PrivateRouteToForm from "./components/PrivateRouteToForm";
 
+//Import action creator
+import { logoutToServer } from "./actions";
+
 //Stylesheet
 import "./App.css";
 
@@ -37,12 +31,6 @@ import "./App.css";
 const navBrand = { fontFamily: "Nunito", color: "white", fontSize: "30px" };
 const navBg = { backgroundColor: "#262749" };
 const navLink = {
-  color: "white",
-  paddingRight: "30px",
-  fontSize: "20px"
-};
-
-const profNavLink = {
   color: "white",
   paddingRight: "30px",
   fontSize: "20px"
@@ -80,11 +68,6 @@ class App extends Component {
   //   });
   // }
 
-  logOut = () => {
-    this.setState({ token: null });
-    localStorage.removeItem("token");
-  };
-
   render() {
     console.log(this.props.user_token);
     return (
@@ -111,7 +94,7 @@ class App extends Component {
                         PROFILE
                       </Link>
                     </NavItem>
-                    <NavItem onClick={this.logOut}>
+                    <NavItem onClick={this.props.logoutToServer}>
                       <Link to="/login" style={navLink}>
                         LOG OUT
                       </Link>
@@ -172,4 +155,7 @@ const mstp = state => {
     user_token: state.form.user_token
   };
 };
-export default connect(mstp)(App);
+export default connect(
+  mstp,
+  { logoutToServer }
+)(App);

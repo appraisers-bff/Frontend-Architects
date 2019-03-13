@@ -27,8 +27,8 @@ const BGContainer = styled.div`
   padding-top: 50px;
   height: 1000px;
 
-  @media (max-width: 700px) {
-    height: 1500px;
+  @media (max-width: 800px) {
+    height: 1300px;
     background-position-y: 0%;
     padding-top: 10px;
   }
@@ -71,7 +71,6 @@ class AppraisalForm extends React.Component {
         sqft: "",
         pool: false,
         user_id: props.user_id
-        // imgFile: ""
       }
     };
   }

@@ -5,6 +5,8 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT_START,
+  LOGOUT_SUCCESS,
   APPRAISAL_START,
   APPRAISAL_SUCCESS,
   APPRAISAL_FAILURE
@@ -92,33 +94,45 @@ const formReducer = (state = initialState, action) => {
 
     case APPRAISAL_START:
       return {
-        ...state
-        // registeredUser: {},
-        // signingUp: false,
-        // loggingIn: false,
-        // submittingAppraisal: true,
-        // error: null
+        ...state,
+        registeredUser: null,
+        signingUp: false,
+        loggingIn: false,
+        submittingAppraisal: true,
+        error: null
       };
 
     case APPRAISAL_SUCCESS:
       return {
         ...state,
-        // registeredUser: {},
-        // signingUp: false,
-        // loggingIn: false,
-        // submittingAppraisal: false,
-        // error: null,
+        registeredUser: null,
+        signingUp: false,
+        loggingIn: false,
+        submittingAppraisal: false,
+        error: null,
         house: action.payload
       };
 
     case APPRAISAL_FAILURE:
       return {
         ...state,
-        registeredUser: {},
+        registeredUser: null,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,
         error: action.payload
+      };
+
+    case LOGOUT_START:
+      return {
+        ...state
+      };
+
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        registeredUsers: null,
+        user_token: ""
       };
 
     default:
