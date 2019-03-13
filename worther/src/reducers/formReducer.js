@@ -15,7 +15,8 @@ const initialState = {
   signingUp: false,
   loggingIn: false,
   error: null,
-  submittingAppraisal: false
+  submittingAppraisal: false,
+  house: {}
 };
 
 const formReducer = (state = initialState, action) => {
