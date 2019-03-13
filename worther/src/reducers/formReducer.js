@@ -5,15 +5,19 @@ import {
   LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT_START,
+  LOGOUT_SUCCESS,
   APPRAISAL_START,
   APPRAISAL_SUCCESS,
   APPRAISAL_FAILURE
 } from "../actions";
 
 const initialState = {
-  users: [],
+  registeredUser: {},
+  user_id: "",
   signingUp: false,
   loggingIn: false,
+  user_token: localStorage.getItem("token"),
   error: null,
   submittingAppraisal: false,
   house: {}
@@ -25,18 +29,20 @@ const formReducer = (state = initialState, action) => {
     case REGISTER_START:
       return {
         ...state,
-        users: [],
-        house: {},
+        registeredUser: null,
+        user_id: null,
         signingUp: true,
-        loggingIn: false,
+        user_token: localStorage.getItem("token"),
         submittingAppraisal: false,
+        house: null,
         error: null
       };
 
     case REGISTER_SUCCESS:
       return {
         ...state,
-        users: action.payload,
+        registeredUser: action.payload,
+        user_id: action.payload.id,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,
@@ -45,7 +51,8 @@ const formReducer = (state = initialState, action) => {
     case REGISTER_FAILURE:
       return {
         ...state,
-        users: [],
+        registeredUser: null,
+        user_id: null,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,
@@ -55,7 +62,8 @@ const formReducer = (state = initialState, action) => {
     case LOGIN_START:
       return {
         ...state,
-        users: [],
+        registeredUser: null,
+        user_id: null,
         signingUp: false,
         loggingIn: true,
         submittingAppraisal: false,
@@ -65,9 +73,11 @@ const formReducer = (state = initialState, action) => {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        users: action.payload,
+        registeredUser: null,
+        user_id: action.payload.id,
         signingUp: false,
         loggingIn: false,
+        user_token: action.payload.token,
         submittingAppraisal: false,
         error: null
       };
@@ -75,7 +85,7 @@ const formReducer = (state = initialState, action) => {
     case LOGIN_FAILURE:
       return {
         ...state,
-        users: [],
+        registeredUser: null,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,
@@ -85,7 +95,7 @@ const formReducer = (state = initialState, action) => {
     case APPRAISAL_START:
       return {
         ...state,
-        users: [],
+        registeredUser: null,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: true,
@@ -95,7 +105,7 @@ const formReducer = (state = initialState, action) => {
     case APPRAISAL_SUCCESS:
       return {
         ...state,
-        users: [],
+        registeredUser: null,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,
@@ -106,11 +116,23 @@ const formReducer = (state = initialState, action) => {
     case APPRAISAL_FAILURE:
       return {
         ...state,
-        users: [],
+        registeredUser: null,
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,
         error: action.payload
+      };
+
+    case LOGOUT_START:
+      return {
+        ...state
+      };
+
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        registeredUsers: null,
+        user_token: ""
       };
 
     default:

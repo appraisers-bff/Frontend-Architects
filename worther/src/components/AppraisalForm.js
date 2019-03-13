@@ -12,7 +12,7 @@ import {
   FormGroup,
   Label,
   Input,
-  FormText,
+  // FormText,
   Row,
   Col
 } from "reactstrap";
@@ -27,8 +27,8 @@ const BGContainer = styled.div`
   padding-top: 50px;
   height: 1000px;
 
-  @media (max-width: 700px) {
-    height: 1500px;
+  @media (max-width: 800px) {
+    height: 1300px;
     background-position-y: 0%;
     padding-top: 10px;
   }
@@ -56,8 +56,8 @@ const btn = { backgroundColor: "#95813B", border: "none" };
 const poolStyle = { marginTop: "30px" };
 
 class AppraisalForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       homeInputs: {
         address: "",
@@ -66,11 +66,11 @@ class AppraisalForm extends React.Component {
         zip: "",
         bed: 1,
         bath: 1,
-        stories: "",
-        garage: "",
+        stories: 1,
+        garage: 1,
         sqft: "",
-        pool: false
-        // imgFile: ""
+        pool: false,
+        user_id: props.user_id
       }
     };
   }
@@ -140,7 +140,13 @@ class AppraisalForm extends React.Component {
               <Col md={4}>
                 <FormGroup>
                   <Label for="state">State</Label>
-                  <Input type="text" name="state" id="state" value="CA" />
+                  <Input
+                    type="text"
+                    name="state"
+                    id="state"
+                    value="CA"
+                    readOnly
+                  />
                 </FormGroup>
               </Col>
               <Col md={2}>
@@ -287,7 +293,13 @@ class AppraisalForm extends React.Component {
 }
 
 
+const mstp = state => {
+  return {
+    user_id: state.form.user_id
+  };
+};
+
 export default connect(
-  null,
+  mstp,
   { appraiseToServer }
 )(AppraisalForm);
