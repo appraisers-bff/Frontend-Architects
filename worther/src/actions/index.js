@@ -11,7 +11,7 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const registerToServer = creds => dispatch => {
   dispatch({ type: REGISTER_START });
   return axios
-    .post("http://localhost:8000/api/register", creds)
+    .post("http://localhost:6000/api/register", creds)
     .then(res => dispatch({ type: REGISTER_SUCCESS, payload: res.data }))
     .catch(err =>
       dispatch({
@@ -24,7 +24,7 @@ export const registerToServer = creds => dispatch => {
 export const loginToServer = creds => dispatch => {
   dispatch({ type: LOGIN_START });
   return axios
-    .post("http://localhost:8000/api/login", creds)
+    .post("http://localhost:6000/api/login", creds)
     .then(res => {
       localStorage.setItem("token", res.data.token);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
