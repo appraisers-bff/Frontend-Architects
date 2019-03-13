@@ -11,7 +11,7 @@ import { Provider } from "react-redux";
 
 //Importing reducers
 import reducer from "./reducers/index";
-import signupReducer from "./reducers/signupReducer";
+import formReducer from "./reducers/formReducer";
 
 //Import Styles
 import "./index.css";
@@ -19,7 +19,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 const reducers = combineReducers({
   reducer: reducer,
-  signup: signupReducer
+  form: formReducer
 });
 const store = createStore(reducers, applyMiddleware(thunk, logger));
 
