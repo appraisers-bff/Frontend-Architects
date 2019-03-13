@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const ResultsPage = props => {
     return(
         <div className="results-page">
