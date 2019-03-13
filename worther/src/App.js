@@ -7,7 +7,8 @@ import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 import LoginPage from "./components/LoginPage";
 import SignupPage from "./components/SignupPage";
 import AppraisalForm from "./components/AppraisalForm";
-import ProfilePage from './components/ProfilePage/ProfilePage.js';
+import ProfilePage from './components/ProfilePage/ProfilePage';
+import ResultsPage from './components/ResultsPage';
 import logo from "./images/logo.svg";
 
 //Stylesheet
@@ -68,6 +69,7 @@ class App extends Component {
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
           <PrivateRoute path="/profile-page" component={ProfilePage} />
+          <Route path="/result" component={ResultsPage} />
         </div>
       </Router>
     );
