@@ -97,7 +97,10 @@ class AppraisalForm extends React.Component {
   calcAppraisal = e => {
     e.preventDefault();
     this.props.appraiseToServer(this.state.homeInputs);
+    this.props.history.push("/result");
   };
+
+
 
   render() {
     return (
@@ -290,11 +293,13 @@ class AppraisalForm extends React.Component {
   }
 }
 
-export const mstp = state => {
+
+const mstp = state => {
   return {
     user_id: state.form.user_id
   };
 };
+
 export default connect(
   mstp,
   { appraiseToServer }

@@ -65,7 +65,8 @@ export const loginToServer = creds => dispatch => {
       .catch(err =>
         dispatch({
           type: LOGIN_FAILURE,
-          payload: "You have an error logging in"
+          payload:
+            "The username or password you entered does not match any account. Please sign up for an account"
         })
       )
   );
