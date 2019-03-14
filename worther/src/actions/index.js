@@ -41,6 +41,7 @@ export const registerToServer = creds => dispatch => {
       .post("https://worther.herokuapp.com/api/register", creds)
       .then(res => {
         dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+        alert("Registration successful! Please log in.");
         console.log(res.data);
       })
       .catch(err =>

@@ -53,18 +53,20 @@ const DoubleBorder = styled.div`
   border: none;
 `;
 
-const House = props => {
-  const getRandomNum = () => {
-    return Math.floor(Math.random() * 206);
-  };
+const unsplashimg = {
+  src: "https://source.unsplash.com/255x200/?house",
+  alt: "random unsplash image"
+};
 
+const House = props => {
   return (
     <HouseDiv>
       <ImgDiv>
-        <DoubleBorder>
-          <DeleteBtn>X</DeleteBtn>
-        </DoubleBorder>
+        <img src={unsplashimg.src} alt={unsplashimg.alt} />
       </ImgDiv>
+      <DoubleBorder>
+        <DeleteBtn>X</DeleteBtn>
+      </DoubleBorder>
       <HouseContentDiv>
         <p>Address</p>
         <p>

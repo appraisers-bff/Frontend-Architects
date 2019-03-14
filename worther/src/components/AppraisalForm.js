@@ -100,8 +100,6 @@ class AppraisalForm extends React.Component {
     this.props.history.push("/result");
   };
 
-
-
   render() {
     return (
       // <BGContainer>
@@ -292,7 +290,6 @@ class AppraisalForm extends React.Component {
     );
   }
 }
-
 
 const mstp = state => {
   return {
