@@ -22,7 +22,7 @@ import logo from "./images/logo.svg";
 import PrivateRouteToForm from "./components/PrivateRouteToForm";
 
 //Import action creator
-import { logoutToServer } from "./actions";
+import { logoutToServer, getHomes } from "./actions";
 
 //Stylesheet
 import "./App.css";
@@ -69,7 +69,7 @@ class App extends Component {
   // }
 
   render() {
-    console.log(this.props.user_token);
+    console.log(`userId: ${this.props.user_id}`);
     return (
       <>
         <Router>
@@ -90,7 +90,7 @@ class App extends Component {
                 {this.props.user_token ? (
                   <>
                     <NavItem>
-                      <Link to="/profile-page" style={navLink}>
+                      <Link to="/profile-page" style={navLink} onClick={() => this.props.getHomes(this.props.user_id)}>
                         PROFILE
                       </Link>
                     </NavItem>
@@ -152,10 +152,11 @@ class App extends Component {
 
 const mstp = state => {
   return {
-    user_token: state.form.user_token
+    user_token: state.form.user_token,
+    user_id: state.form.user_id
   };
 };
 export default connect(
   mstp,
-  { logoutToServer }
+  { logoutToServer, getHomes }
 )(App);

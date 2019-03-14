@@ -10,7 +10,7 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 import { Provider } from "react-redux";
 
 //Importing reducers
-import reducer from "./reducers/index";
+import homesReducer from "./reducers/homesReducer";
 import formReducer from "./reducers/formReducer";
 
 //Import Styles
@@ -18,7 +18,7 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const reducers = combineReducers({
-  reducer: reducer,
+  homes: homesReducer,
   form: formReducer
 });
 const store = createStore(reducers, applyMiddleware(thunk, logger));

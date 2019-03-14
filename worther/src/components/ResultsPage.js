@@ -53,7 +53,6 @@ const SaveBtn = styled.button`
 
 class ResultsPage extends React.Component {
     render() {
-        console.log(this.props.form.house);
         return(
             <Result>
                 <ResultHeader>
@@ -64,8 +63,12 @@ class ResultsPage extends React.Component {
                 <img src="https://www.monolithic.org/vault/img/2011/05/10/4dc92b6ec29e0684730009c6/small/house6.jpg" alt="house" />
 
                 <HouseSummary>
-                    <HouseMetric><MetricImg src={bed} /> {this.props.form.house.bed}bd</HouseMetric>
-                    <HouseMetric><MetricImg src={bath} /> {this.props.form.house.bath}ba</HouseMetric>
+                    <HouseMetric>
+                        <MetricImg src={bed} /> {this.props.form.house.bed}bd
+                    </HouseMetric>
+                    <HouseMetric>
+                        <MetricImg src={bath} /> {this.props.form.house.bath}ba
+                    </HouseMetric>
                     <HouseMetric>{this.props.form.house.sqft} sqft</HouseMetric>
                 </HouseSummary>
 

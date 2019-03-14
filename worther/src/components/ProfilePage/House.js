@@ -1,5 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import {connect } from 'react-redux';
+import { passHomeToUpdate, deleteHome } from '../../actions';
 
 const HouseDiv = styled.div`
     width: 20%;
@@ -23,7 +26,7 @@ const HouseContentDiv = styled.div`
     padding: 20px 20px 0 20px;
 `;
 
-const UpdateBtn = styled.button`
+const UpdateBtn = styled(Link)`
     width: 40%;
     height: 37px;
     margin-bottom: 20px;
@@ -57,7 +60,7 @@ const House = props => {
     return(
         <HouseDiv>
             <ImgDiv>
-                <DoubleBorder><DeleteBtn>X</DeleteBtn></DoubleBorder>
+                <DoubleBorder><DeleteBtn onClick={() => props.deleteHome(props.house.id)}>X</DeleteBtn></DoubleBorder>
             </ImgDiv>
             <HouseContentDiv>
                 <p>Address</p>
@@ -68,9 +71,9 @@ const House = props => {
                 <p><strong>Heating: </strong>{props.house.heating ? "Yes" : "No"}</p>
                 <p><strong>Cooling: </strong>{props.house.cooling ? "Yes" : "No"}</p>
             </HouseContentDiv>
-            <UpdateBtn>Update</UpdateBtn>
+            <UpdateBtn to="/appraisal-form" onClick={() => props.passHomeToUpdate(props.house)}>Update</UpdateBtn>
         </HouseDiv>
     );
 }
 
-export default House;
+export default connect(null, { passHomeToUpdate, deleteHome })(House);
