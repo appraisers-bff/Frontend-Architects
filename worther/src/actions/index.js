@@ -37,6 +37,7 @@ export const DELETE_HOME = "DELETE_HOME";
 export const DELETE_HOME_SUCCESS = "DELETE_HOME_SUCCESS";
 export const DELETE_HOME_FAILURE = "DELETE_HOME_FAILURE";
 
+
 export const appraiseToServer = homeInputs => dispatch => {
   dispatch({ type: APPRAISAL_START });
   return (
@@ -60,6 +61,8 @@ export const registerToServer = creds => dispatch => {
       .post("https://worther.herokuapp.com/api/register", creds)
       .then(res => {
         dispatch({ type: REGISTER_SUCCESS, payload: res.data });
+        alert("Registration successful! Please log in.");
+        console.log(res.data);
       })
       .catch(err =>
         dispatch({
@@ -83,7 +86,8 @@ export const loginToServer = creds => dispatch => {
       .catch(err =>
         dispatch({
           type: LOGIN_FAILURE,
-          payload: "You have an error logging in"
+          payload:
+            "The username or password you entered does not match any account. Please sign up for an account"
         })
       )
   );

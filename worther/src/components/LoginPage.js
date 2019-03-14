@@ -104,13 +104,20 @@ class LoginPage extends React.Component {
             </FormGroup>
 
             <Button style={btn}>SIGN IN</Button>
+            {this.props.error && <p>{this.props.error}</p>}
           </Form>
         </Container>
       </BGContainer>
     );
   }
 }
+
+const mstp = state => {
+  return {
+    error: state.form.error
+  };
+};
 export default connect(
-  null,
+  mstp,
   { loginToServer }
 )(LoginPage);

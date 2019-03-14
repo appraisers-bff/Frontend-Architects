@@ -89,7 +89,7 @@ const formReducer = (state = initialState, action) => {
         signingUp: false,
         loggingIn: false,
         submittingAppraisal: false,
-        error: true
+        error: action.payload
       };
 
     case APPRAISAL_START:

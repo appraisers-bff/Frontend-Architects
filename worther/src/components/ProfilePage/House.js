@@ -1,3 +1,4 @@
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -5,26 +6,27 @@ import {connect } from 'react-redux';
 import { passHomeToUpdate, deleteHome } from '../../actions';
 
 const HouseDiv = styled.div`
-    width: 20%;
-    border: 1px solid lightgray;
-    margin: 5% 30px;
-    border-radius: 10px;
+  width: 20%;
+  border: 1px solid lightgray;
+  margin: 5% 30px;
+  border-radius: 10px;
 `;
 
 const ImgDiv = styled.div`
-    background-color: gray;
-    height: 200px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+  background-color: gray;
+  height: 200px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 const HouseContentDiv = styled.div`
-    line-height: 0.75; /* Makes child line height half spaced*/
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: flex-start;
-    padding: 20px 20px 0 20px;
+  line-height: 0.75; /* Makes child line height half spaced*/
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  padding: 20px 20px 0 20px;
 `;
+
 
 const UpdateBtn = styled(Link)`
     width: 40%;
@@ -34,34 +36,41 @@ const UpdateBtn = styled(Link)`
     border-radius: 5px;
     background-color: #95813B;
     color: white;
-`;
 
 const DeleteBtn = styled.button`
-    text-align: center;
-    height: 42px;
-    width: 42px;
-    border-radius: 50%;
-    border: 2px solid #95813B;
-    color: #95813B;
-    background-color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
+  text-align: center;
+  height: 42px;
+  width: 42px;
+  border-radius: 50%;
+  border: 2px solid #95813b;
+  color: #95813b;
+  background-color: white;
+  font-size: 1.8rem;
+  font-weight: bold;
 
-    position: relative;
-    bottom: 15px;
-    left: 47%;
+  position: relative;
+  bottom: 15px;
+  left: 47%;
 `;
 
 const DoubleBorder = styled.div`
-    border: none;
+  border: none;
 `;
+
+const unsplashimg = {
+  src: "https://source.unsplash.com/255x200/?house",
+  alt: "random unsplash image"
+};
 
 const House = props => {
     return(
         <HouseDiv>
-            <ImgDiv>
-                <DoubleBorder><DeleteBtn onClick={() => props.deleteHome(props.house.id)}>X</DeleteBtn></DoubleBorder>
-            </ImgDiv>
+      <ImgDiv>
+        <img src={unsplashimg.src} alt={unsplashimg.alt} />
+      </ImgDiv>
+      <DoubleBorder>
+        <DeleteBtn>X</DeleteBtn>
+      </DoubleBorder>
             <HouseContentDiv>
                 <p>Address</p>
                 <p><strong>Year Built: </strong>{props.house.year_built}</p>
