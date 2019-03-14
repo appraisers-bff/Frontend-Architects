@@ -120,35 +120,3 @@ const houses = [
     cooling: true
   }
 ];
-
-const initialState = {
-  houses: houses,
-  fetchingHouses: false,
-  addingHouse: false,
-  deletingHouse: false,
-  error: null
-};
-
-// const reducer = (state=initialState, action) => {
-//     switch(action.type){
-//         case FETCHING_USER:
-//             return {
-
-//             }
-
-//         case USER_FETCH_SUCCESS:
-//             return {
-
-//             }
-
-//         case USER_FETCH_FAILURE:
-//             return {
-
-//             }
-
-//         default:
-//             return state
-//     }
-// }
-
-// export default reducer;
