@@ -72,7 +72,8 @@ class AppraisalForm extends React.Component {
         sqft: "",
         pool: false,
         user_id: props.user_id
-      }
+      },
+      updating: false
     };
   }
 
@@ -100,25 +101,60 @@ class AppraisalForm extends React.Component {
     this.props.history.push("/result");
   };
 
+
+  updateHomeAppraisal = () => {
+    this.setState({
+      ...this.state,
+      homeInputs: {
+        address: this.props.currentHouse.address,
+        
+      },
+      updating: true
+    });
+  }
+
+
+  
+
+  submitAppraisalUpdate = e => {
+    e.preventDefault();
+    this.setState({
+      homeInputs: {
+        address: "",
+        city: "Los Angeles",
+        state: "CA",
+        zip: "",
+        bed: 1,
+        bath: 1,
+        stories: 1,
+        garage: 1,
+        sqft: "",
+        pool: false,
+        user_id: this.props.user_id
+      },
+      updating: false
+    });
+  }
+
   render() {
     return (
-      // <BGContainer>
-      <Container>
-        <H1Style>Discover your home's worth today</H1Style>
-        <Form
-          className="d-flex flex-column justify-content-center"
-          onSubmit={this.calcAppraisal}
-        >
-          <FormGroup>
-            <Label for="address">Address</Label>
-            <Input
-              type="text"
-              name="address"
-              id="address"
-              placeholder="1234 Main St"
-              onChange={this.handleChange}
-            />
-          </FormGroup>
+      <BGContainer>
+        <Container>
+          <H1Style>Discover your home's worth today</H1Style>
+          <Form
+            className="d-flex flex-column justify-content-center"
+            onSubmit={(this.state.updating ? this.submitAppraisalUpdate : this.calcAppraisal)}
+          >
+            <FormGroup>
+              <Label for="address">Address</Label>
+              <Input
+                type="text"
+                name="address"
+                id="address"
+                placeholder="1234 Main St"
+                onChange={this.handleChange}
+              />
+            </FormGroup>
 
           <Row form>
             <Col md={6}>
@@ -293,7 +329,8 @@ class AppraisalForm extends React.Component {
 
 const mstp = state => {
   return {
-    user_id: state.form.user_id
+    user_id: state.form.user_id,
+    currentHouse: state.homes.currentHouse
   };
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import HousesList from './HousesList';
 import styled from 'styled-components';
+import { connect} from 'react-redux';
 
 const houses = [
     {"id":2,"first_name":"Rickert","last_name":"Sharville","email":"rsharville0@cisco.com","number_bedrooms":5,"number_bathrooms":1,"number_sq_ft":880007,"year_built":"12/1/1992","heating":true,"cooling":false},
@@ -43,19 +44,29 @@ const Greetingh5 = styled.h5`
 `;
 
 
-const ProfilePage = props => {
-    return(
-        <ProfileDiv>
-            <ProfileHeadingDiv>
-                <GreetingsDiv>
-                    <Greetingh1>Hello, Jordan.</Greetingh1>
-                    <Greetingh5>See your saved home appraisals below.</Greetingh5>
-                </GreetingsDiv>
-            </ProfileHeadingDiv>
-            
-            <HousesList houses={houses} />
-        </ProfileDiv>
-    );
+class ProfilePage extends React.Component {
+    
+    render(){
+        console.log(this.props.houses);
+        return(
+            <ProfileDiv>
+                <ProfileHeadingDiv>
+                    <GreetingsDiv>
+                        <Greetingh1>Hello, Jordan.</Greetingh1>
+                        <Greetingh5>See your saved home appraisals below.</Greetingh5>
+                    </GreetingsDiv>
+                </ProfileHeadingDiv>
+                
+                <HousesList houses={this.props.houses} />
+            </ProfileDiv>
+        );
+    }
 }
 
-export default ProfilePage;
+const mapStateToProps = state => {
+    return {
+        houses: state.homes.houses
+    }
+}
+
+export default connect(mapStateToProps, {})(ProfilePage);
