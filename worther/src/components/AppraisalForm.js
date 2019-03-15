@@ -211,6 +211,11 @@ class AppraisalForm extends React.Component {
                   <option>8</option>
                   <option>9</option>
                   <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
                 </Input>
               </FormGroup>
             </Col>
@@ -233,6 +238,11 @@ class AppraisalForm extends React.Component {
                   <option>8</option>
                   <option>9</option>
                   <option>10</option>
+                  <option>11</option>
+                  <option>12</option>
+                  <option>13</option>
+                  <option>14</option>
+                  <option>15</option>
                 </Input>
               </FormGroup>
             </Col>

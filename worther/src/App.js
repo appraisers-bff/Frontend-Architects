@@ -137,7 +137,9 @@ class App extends Component {
             <PrivateRouteToForm
               path="/appraisal-form"
               component={AppraisalForm}
-              // render={props => <AppraisalForm {...props} />}
+              // render={props => (
+              //   <AppraisalForm activeHome={this.state.activeHome} {...props} />
+              // )}
             />
             <Route path="/result" component={ResultsPage} />
           </div>
