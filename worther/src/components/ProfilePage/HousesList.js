@@ -1,22 +1,26 @@
-import React from 'react';
-import House from './House';
-import styled from 'styled-components';
+import React from "react";
+import House from "./House";
+import styled from "styled-components";
 
 const HouseListDiv = styled.div`
-    width: 100%;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 `;
 
 const HousesList = props => {
-    return(
-        <HouseListDiv>
-            {props.houses.map(house => 
-                <House key={house.id} house={house} />
-            )}
-        </HouseListDiv>
-    );
-}
+  return (
+    <HouseListDiv>
+      {props.houses.map(house => (
+        <House
+          key={house.id}
+          house={house}
+          setUpdateForm={props.setUpdateForm}
+        />
+      ))}
+    </HouseListDiv>
+  );
+};
 
 export default HousesList;

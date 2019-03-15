@@ -33,7 +33,7 @@ export const UPDATE_HOME_FAILURE = "UPDATE_HOME_FAILURE";
 
 export const GET_HOME_TO_UPDATE = "GET_HOME_TO_UPDATE";
 
-export const DELETE_HOME = "DELETE_HOME";
+export const DELETE_HOME_START = "DELETE_HOME_START";
 export const DELETE_HOME_SUCCESS = "DELETE_HOME_SUCCESS";
 export const DELETE_HOME_FAILURE = "DELETE_HOME_FAILURE";
 
@@ -135,12 +135,12 @@ export const passHomeToUpdate = house => {
   };
 };
 
-export const deleteHome = homeId => dispatch => {
-  dispatch({ type: DELETE_HOME });
+export const deleteHomeFromServer = homeId => dispatch => {
+  dispatch({ type: DELETE_HOME_START });
   return axios
-    .post(`https://worther.herokuapp.com/api/house/${homeId}`)
+    .delete(`https://worther.herokuapp.com/api/house/${homeId}`)
     .then(response => {
-      dispatch({ type: DELETE_HOME_SUCCESS, payload: response.data });
+      console.log("Delete Response", response);
     })
     .catch(error => {
       dispatch({

@@ -68,6 +68,13 @@ class App extends Component {
   //   });
   // }
 
+  setUpdateForm = house => {
+    this.setState({
+      activeHouse: house
+    });
+    this.props.history.push("/appraisal-form");
+  };
+
   render() {
     console.log(`userId: ${this.props.user_id}`);
     return (
@@ -130,6 +137,7 @@ class App extends Component {
             <PrivateRouteToForm
               path="/appraisal-form"
               component={AppraisalForm}
+              // render={props => <AppraisalForm {...props} />}
             />
             <Route path="/result" component={ResultsPage} />
           </div>

@@ -17,7 +17,7 @@ import {
   Col
 } from "reactstrap";
 
-import bgImg from "../images/form-house.jpg";
+// import bgImg from "../images/form-house.jpg";
 
 //Styling used styled-components
 // const BGContainer = styled.div`
@@ -54,7 +54,6 @@ const H1Style = styled.h1`
 
 //In-line styling
 const btn = { backgroundColor: "#95813B", border: "none" };
-const poolStyle = { marginTop: "30px" };
 
 //add props.user_id instead of 1 hard code
 class AppraisalForm extends React.Component {
@@ -129,7 +128,6 @@ class AppraisalForm extends React.Component {
   };
 
   render() {
-    console.log(this.state);
     return (
       <Container>
         <H1Style>Discover your home's worth today</H1Style>

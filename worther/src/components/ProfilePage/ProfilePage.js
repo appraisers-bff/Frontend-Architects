@@ -167,7 +167,10 @@ class ProfilePage extends React.Component {
           </GreetingsDiv>
         </ProfileHeadingDiv>
 
-        <HousesList houses={this.props.houses} />
+        <HousesList
+          houses={this.props.houses}
+          setUpdateForm={this.setUpdateForm}
+        />
       </ProfileDiv>
     );
   }

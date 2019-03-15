@@ -10,7 +10,6 @@ const Result = styled.div`
   flex-flow: column nowrap;
   align-items: center;
   margin: 40px auto;
-  border: 1px solid red;
 `;
 
 const ResultHeader = styled.h2`
@@ -71,10 +70,7 @@ class ResultsPage extends React.Component {
           worth <Estimate>${this.props.form.house.fmv}</Estimate>
         </ResultHeader>
 
-        <img
-          src="https://www.monolithic.org/vault/img/2011/05/10/4dc92b6ec29e0684730009c6/small/house6.jpg"
-          alt="house"
-        />
+        <img src="https://source.unsplash.com/1000x475/?house" alt="house" />
 
         <HouseSummary>
           <HouseMetric>
