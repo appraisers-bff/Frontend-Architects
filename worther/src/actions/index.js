@@ -37,20 +37,17 @@ export const DELETE_HOME = "DELETE_HOME";
 export const DELETE_HOME_SUCCESS = "DELETE_HOME_SUCCESS";
 export const DELETE_HOME_FAILURE = "DELETE_HOME_FAILURE";
 
-
 export const appraiseToServer = homeInputs => dispatch => {
   dispatch({ type: APPRAISAL_START });
-  return (
-    axios
-      .post(`https://worther.herokuapp.com/api/house`, homeInputs)
-      .then(res => dispatch({ type: APPRAISAL_SUCCESS, payload: res.data }))
-      .catch(err =>
-        dispatch({
-          type: APPRAISAL_FAILURE,
-          payload: "You have an error appraising"
-        })
-      )
-  );
+  return axios
+    .post(`https://worther.herokuapp.com/api/house`, homeInputs)
+    .then(res => dispatch({ type: APPRAISAL_SUCCESS, payload: res.data }))
+    .catch(err =>
+      dispatch({
+        type: APPRAISAL_FAILURE,
+        payload: "You have an error appraising"
+      })
+    );
 };
 
 export const registerToServer = creds => dispatch => {
@@ -99,52 +96,56 @@ export const logoutToServer = () => dispatch => {
   dispatch({ type: LOGOUT_SUCCESS });
 };
 
-
 export const getHomes = userId => dispatch => {
   dispatch({ type: GET_HOMES });
-  return (
-    axios
-      .get(`https://worther.herokuapp.com/api/user/${userId}/house`)
-      .then(response => {
-        dispatch({ type: GET_HOMES_SUCCESS, payload: response.data });
-      })
-      .catch(error => {
-        dispatch({ type: GET_HOMES_FAILURE, payload: "Unable to retrieve homes." });
-      })
-  );
-}
+  return axios
+    .get(`https://worther.herokuapp.com/api/user/${userId}/house`, {
+      headers: { Authorization: localStorage.getItem("token") }
+    })
+    .then(response => {
+      dispatch({ type: GET_HOMES_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      dispatch({
+        type: GET_HOMES_FAILURE,
+        payload: "Unable to retrieve homes."
+      });
+    });
+};
 
 export const updateHome = homeId => dispatch => {
   dispatch({ type: UPDATE_HOME });
-  return (
-    axios
-      .post(`https://worther.herokuapp.com/api/house/${homeId}`)
-      .then(response => {
-        dispatch({ type: UPDATE_HOME_SUCCESS, payload: response.data });
-      })
-      .catch(error => {
-        dispatch({ type: UPDATE_HOME_FAILURE, payload: "Unable to update home." })
-      })
-  );
-}
+  return axios
+    .post(`https://worther.herokuapp.com/api/house/${homeId}`)
+    .then(response => {
+      dispatch({ type: UPDATE_HOME_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      dispatch({
+        type: UPDATE_HOME_FAILURE,
+        payload: "Unable to update home."
+      });
+    });
+};
 
 export const passHomeToUpdate = house => {
   return {
-    type: GET_HOME_TO_UPDATE, payload: house
-  }
-}
-
+    type: GET_HOME_TO_UPDATE,
+    payload: house
+  };
+};
 
 export const deleteHome = homeId => dispatch => {
   dispatch({ type: DELETE_HOME });
-  return (
-    axios
-      .post(`https://worther.herokuapp.com/api/house/${homeId}`)
-      .then(response => {
-        dispatch({ type: DELETE_HOME_SUCCESS, payload: response.data });
-      })
-      .catch(error => {
-        dispatch({ type: DELETE_HOME_FAILURE, payload: "Unable to delete home." })
-      })
-  );
-}
+  return axios
+    .post(`https://worther.herokuapp.com/api/house/${homeId}`)
+    .then(response => {
+      dispatch({ type: DELETE_HOME_SUCCESS, payload: response.data });
+    })
+    .catch(error => {
+      dispatch({
+        type: DELETE_HOME_FAILURE,
+        payload: "Unable to delete home."
+      });
+    });
+};

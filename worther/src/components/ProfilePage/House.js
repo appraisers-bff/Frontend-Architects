@@ -1,9 +1,8 @@
-
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import {connect } from 'react-redux';
-import { passHomeToUpdate, deleteHome } from '../../actions';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { passHomeToUpdate, deleteHome } from "../../actions";
 
 const HouseDiv = styled.div`
   width: 20%;
@@ -27,15 +26,15 @@ const HouseContentDiv = styled.div`
   padding: 20px 20px 0 20px;
 `;
 
-
 const UpdateBtn = styled(Link)`
-    width: 40%;
-    height: 37px;
-    margin-bottom: 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #95813B;
-    color: white;
+  width: 40%;
+  height: 37px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #95813b;
+  color: white;
+`;
 
 const DeleteBtn = styled.button`
   text-align: center;
@@ -63,26 +62,52 @@ const unsplashimg = {
 };
 
 const House = props => {
-    return(
-        <HouseDiv>
+  return (
+    <HouseDiv>
       <ImgDiv>
         <img src={unsplashimg.src} alt={unsplashimg.alt} />
       </ImgDiv>
       <DoubleBorder>
         <DeleteBtn>X</DeleteBtn>
       </DoubleBorder>
-            <HouseContentDiv>
-                <p>Address</p>
-                <p><strong>Year Built: </strong>{props.house.year_built}</p>
-                <p><strong>Square Feet: </strong>{props.house.number_sq_ft}</p>
-                <p><strong>Beds: </strong>{props.house.number_bedrooms}</p>
-                <p><strong>Baths: </strong>{props.house.number_bathrooms}</p>
-                <p><strong>Heating: </strong>{props.house.heating ? "Yes" : "No"}</p>
-                <p><strong>Cooling: </strong>{props.house.cooling ? "Yes" : "No"}</p>
-            </HouseContentDiv>
-            <UpdateBtn to="/appraisal-form" onClick={() => props.passHomeToUpdate(props.house)}>Update</UpdateBtn>
-        </HouseDiv>
-    );
-}
+      <HouseContentDiv>
+        <p>Address</p>
+        <p>
+          <strong>Year Built: </strong>
+          {props.house.year_built}
+        </p>
+        <p>
+          <strong>Square Feet: </strong>
+          {props.house.number_sq_ft}
+        </p>
+        <p>
+          <strong>Beds: </strong>
+          {props.house.number_bedrooms}
+        </p>
+        <p>
+          <strong>Baths: </strong>
+          {props.house.number_bathrooms}
+        </p>
+        <p>
+          <strong>Heating: </strong>
+          {props.house.heating ? "Yes" : "No"}
+        </p>
+        <p>
+          <strong>Cooling: </strong>
+          {props.house.cooling ? "Yes" : "No"}
+        </p>
+      </HouseContentDiv>
+      <UpdateBtn
+        to="/appraisal-form"
+        onClick={() => props.passHomeToUpdate(props.house)}
+      >
+        Update
+      </UpdateBtn>
+    </HouseDiv>
+  );
+};
 
-export default connect(null, { passHomeToUpdate, deleteHome })(House);
+export default connect(
+  null,
+  { passHomeToUpdate, deleteHome }
+)(House);

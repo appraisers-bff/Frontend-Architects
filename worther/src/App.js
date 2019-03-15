@@ -90,7 +90,11 @@ class App extends Component {
                 {this.props.user_token ? (
                   <>
                     <NavItem>
-                      <Link to="/profile-page" style={navLink} onClick={() => this.props.getHomes(this.props.user_id)}>
+                      <Link
+                        to="/profile-page"
+                        style={navLink}
+                        onClick={() => this.props.getHomes(this.props.user_id)}
+                      >
                         PROFILE
                       </Link>
                     </NavItem>
@@ -98,21 +102,6 @@ class App extends Component {
                       <Link to="/login" style={navLink}>
                         LOG OUT
                       </Link>
-                      {/* <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle style={profNavLink} nav caret>
-                          PROFILE
-                        </DropdownToggle>
-
-                        <DropdownMenu right>
-                          <DropdownItem>
-                            <Link to="/profile-page"> Saved Houses</Link>
-                          </DropdownItem>
-                          <DropdownItem divider />
-                          <DropdownItem onClick={this.logOut}>
-                            Log out
-                          </DropdownItem>
-                        </DropdownMenu>
-                      </UncontrolledDropdown> */}
                     </NavItem>
                   </>
                 ) : (
