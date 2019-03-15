@@ -55,12 +55,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     token: null
-  //   };
-  // }
+  constructor() {
+    super();
+    this.state = {
+      activeHouse: null
+    };
+  }
 
   // componentDidMount() {
   //   this.setState({

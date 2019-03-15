@@ -152,6 +152,7 @@ const Greetingh1 = styled.h1`
 
 const Greetingh5 = styled.h5`
   color: #64668d;
+  margin-bottom: 20px;
 `;
 
 class ProfilePage extends React.Component {

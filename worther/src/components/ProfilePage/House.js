@@ -4,6 +4,16 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { passHomeToUpdate, deleteHome } from "../../actions";
 
+import {
+  Card,
+  Button,
+  CardHeader,
+  CardFooter,
+  CardBody,
+  CardTitle,
+  CardText
+} from "reactstrap";
+
 const HouseDiv = styled.div`
   width: 20%;
   border: 1px solid lightgray;
@@ -61,49 +71,92 @@ const unsplashimg = {
   alt: "random unsplash image"
 };
 
+const CardContainer = styled.div`
+  margin: 20px;
+`;
+
 const House = props => {
   return (
-    <HouseDiv>
-      <ImgDiv>
-        <img src={unsplashimg.src} alt={unsplashimg.alt} />
-      </ImgDiv>
-      <DoubleBorder>
-        <DeleteBtn>X</DeleteBtn>
-      </DoubleBorder>
-      <HouseContentDiv>
-        <p>Address</p>
-        <p>
-          <strong>Year Built: </strong>
-          {props.house.year_built}
-        </p>
-        <p>
-          <strong>Square Feet: </strong>
-          {props.house.number_sq_ft}
-        </p>
-        <p>
-          <strong>Beds: </strong>
-          {props.house.number_bedrooms}
-        </p>
-        <p>
-          <strong>Baths: </strong>
-          {props.house.number_bathrooms}
-        </p>
-        <p>
-          <strong>Heating: </strong>
-          {props.house.heating ? "Yes" : "No"}
-        </p>
-        <p>
-          <strong>Cooling: </strong>
-          {props.house.cooling ? "Yes" : "No"}
-        </p>
-      </HouseContentDiv>
-      <UpdateBtn
-        to="/appraisal-form"
-        onClick={() => props.passHomeToUpdate(props.house)}
-      >
-        Update
-      </UpdateBtn>
-    </HouseDiv>
+    <CardContainer>
+      <Card>
+        <CardHeader tag="h6">
+          {props.house.address}
+          {"\n"}
+          {props.house.city}, {props.house.state} {props.house.zip}
+          <Button close />{" "}
+        </CardHeader>
+        <CardBody>
+          <CardTitle>
+            <p>
+              <strong>Fair Market Value: </strong>
+              {props.house.fmv}
+            </p>
+            <p>
+              <strong>Zestimate: </strong>
+              {props.house.zestimate}
+            </p>
+          </CardTitle>
+          <i className="fas fa-bath" />
+          <CardText>
+            <p>
+              <strong>Year Built: </strong>
+              {props.house.year}
+            </p>
+            <p>
+              <strong>Square Feet: </strong>
+              {props.house.sqft}
+            </p>
+            <p>
+              <strong>Beds: </strong>
+              {props.house.bed}
+            </p>
+            <p>
+              <strong>Baths: </strong>
+              {props.house.bath}
+            </p>
+          </CardText>
+          <Button>Update Estimate</Button>
+        </CardBody>
+        <CardFooter className="text-muted" />
+      </Card>
+    </CardContainer>
+
+    // <HouseDiv>
+    //   <ImgDiv>
+    //     <img src={unsplashimg.src} alt={unsplashimg.alt} />
+    //   </ImgDiv>
+    //   <DoubleBorder>
+    //     <DeleteBtn>X</DeleteBtn>
+    //   </DoubleBorder>
+    //   <HouseContentDiv>
+    //     <p>
+    //       <strong>{props.house.address}</strong>
+    //     </p>
+    //     <p>
+    //       <strong>
+    //         {props.house.city}, {props.house.state} {props.house.zip}
+    //       </strong>
+    //     </p>
+    //     <p>
+    //       <strong>Square Feet: </strong>
+    //       {props.house.sqft}
+    //     </p>
+    //     <p>
+    //       <strong>Beds: </strong>
+    //       {props.house.bed}
+    //     </p>
+    //     <p>
+    //       <strong>Baths: </strong>
+    //       {props.house.bath}
+    //     </p>
+    //   </HouseContentDiv>
+    //   <UpdateBtn
+    //     to="/appraisal-form"
+    //     onClick={() => props.passHomeToUpdate(props.house)}
+    //   >
+    //     Update
+    //   </UpdateBtn>
+    // </HouseDiv>
   );
 };
 
