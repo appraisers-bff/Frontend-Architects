@@ -155,15 +155,12 @@ class AppraisalForm extends React.Component {
               <FormGroup>
                 <Label for="city">Select City</Label>
                 <Input
-                  type="select"
+                  type="text"
                   name="city"
                   id="city"
-                  onChange={this.handleChange}
-                >
-                  <option>Los Angeles</option>
-                  <option>Orange</option>
-                  <option>Ventura</option>
-                </Input>
+                  value="Los Angeles"
+                  readOnly
+                />
               </FormGroup>
             </Col>
             <Col md={4}>
