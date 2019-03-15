@@ -85,7 +85,7 @@ class ResultsPage extends React.Component {
             <MetricP>{this.props.form.house.sqft} sqft</MetricP>
           </HouseMetric>
           <HouseMetric>
-            <MetricP>{this.props.form.house.zestimate} Zestimate</MetricP>
+            <MetricP>${this.props.form.house.zestimate} Zestimate</MetricP>
           </HouseMetric>
         </HouseSummary>
 
@@ -95,7 +95,7 @@ class ResultsPage extends React.Component {
             this.props.form.house.zip
           }`}
         </h3>
-        <SaveBtn>Save to Profile</SaveBtn>
+        {/* <SaveBtn ><Link>Save to Profile</Link></SaveBtn> */}
       </Result>
     );
   }
