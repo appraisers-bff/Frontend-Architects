@@ -9,7 +9,7 @@ const Result = styled.div`
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  margin-top: 40px;
+  margin: 40px auto;
 `;
 
 const ResultHeader = styled.h2`
@@ -34,6 +34,8 @@ const HouseSummary = styled.div`
 const HouseMetric = styled.p`
   width: 20%;
   margin-left: 0;
+  display: flex;
+  align-items: baseline;
 `;
 
 const MetricImg = styled.img`
@@ -44,37 +46,48 @@ const MetricImg = styled.img`
 const SaveBtn = styled.button`
   width: 40%;
   height: 50px;
-  font-size: 0.8rem;
+  font-size: 1rem;
   background-color: #95813b;
   color: white;
   border: none;
   border-radius: 5px;
 `;
 
+const MetricP = styled.p`
+  font-size: 20px;
+`;
+
 class ResultsPage extends React.Component {
+  render() {
+    // const fmv = this.prop.form.house;
+    // String(fmv).replace(/(.)(?=(\d{3})+$)/g, "$1,");
 
-    render() {
-        return(
-            <Result>
-                <ResultHeader>
-                        We estimate your home is <br/>
-                        worth <Estimate>$500,000.</Estimate>
-                </ResultHeader>
+    console.log(this.props);
+    return (
+      <Result>
+        <ResultHeader>
+          We estimate your home is <br />
+          worth <Estimate>${this.props.form.house.fmv}</Estimate>
+        </ResultHeader>
 
-        <img
-          src="https://www.monolithic.org/vault/img/2011/05/10/4dc92b6ec29e0684730009c6/small/house6.jpg"
-          alt="house"
-        />
+        <img src="https://source.unsplash.com/1000x475/?house" alt="house" />
 
-                <HouseSummary>
-                    <HouseMetric>
-                        <MetricImg src={bed} /> {this.props.form.house.bed}bd
-                    </HouseMetric>
-                    <HouseMetric>
-                        <MetricImg src={bath} /> {this.props.form.house.bath}ba
-                    </HouseMetric>
-                    <HouseMetric>{this.props.form.house.sqft} sqft</HouseMetric>
-                </HouseSummary>
+        <HouseSummary>
+          <HouseMetric>
+            <MetricImg src={bed} />{" "}
+            <MetricP>{this.props.form.house.bed}bd</MetricP>
+          </HouseMetric>
+          <HouseMetric>
+            <MetricImg src={bath} />{" "}
+            <MetricP>{this.props.form.house.bath}ba</MetricP>
+          </HouseMetric>
+          <HouseMetric>
+            <MetricP>{this.props.form.house.sqft} sqft</MetricP>
+          </HouseMetric>
+          <HouseMetric>
+            <MetricP>{this.props.form.house.zestimate} Zestimate</MetricP>
+          </HouseMetric>
+        </HouseSummary>
 
         <h3>
           {`${this.props.form.house.address},`} <br />

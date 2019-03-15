@@ -55,18 +55,25 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 class App extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     token: null
-  //   };
-  // }
+  constructor() {
+    super();
+    this.state = {
+      activeHouse: null
+    };
+  }
 
   // componentDidMount() {
   //   this.setState({
   //     token: localStorage.getItem("token")
   //   });
   // }
+
+  setUpdateForm = house => {
+    this.setState({
+      activeHouse: house
+    });
+    this.props.history.push("/appraisal-form");
+  };
 
   render() {
     console.log(`userId: ${this.props.user_id}`);
@@ -90,7 +97,11 @@ class App extends Component {
                 {this.props.user_token ? (
                   <>
                     <NavItem>
-                      <Link to="/profile-page" style={navLink} onClick={() => this.props.getHomes(this.props.user_id)}>
+                      <Link
+                        to="/profile-page"
+                        style={navLink}
+                        onClick={() => this.props.getHomes(this.props.user_id)}
+                      >
                         PROFILE
                       </Link>
                     </NavItem>
@@ -98,27 +109,12 @@ class App extends Component {
                       <Link to="/login" style={navLink}>
                         LOG OUT
                       </Link>
-                      {/* <UncontrolledDropdown nav inNavbar>
-                        <DropdownToggle style={profNavLink} nav caret>
-                          PROFILE
-                        </DropdownToggle>
-
-                        <DropdownMenu right>
-                          <DropdownItem>
-                            <Link to="/profile-page"> Saved Houses</Link>
-                          </DropdownItem>
-                          <DropdownItem divider />
-                          <DropdownItem onClick={this.logOut}>
-                            Log out
-                          </DropdownItem>
-                        </DropdownMenu>
-                      </UncontrolledDropdown> */}
                     </NavItem>
                   </>
                 ) : (
                   <>
                     <NavItem>
-                      <Link to="/signup" style={navLink}>
+                      <Link to="/" style={navLink}>
                         SIGN UP
                       </Link>
                     </NavItem>
@@ -136,11 +132,12 @@ class App extends Component {
             {/* 
           <Route path="/appraisal-form" component={AppraisalForm} /> */}
             <Route path="/login" component={LoginPage} />
-            <Route path="/signup" component={SignupPage} />
+            <Route exact path="/" component={SignupPage} />
             <PrivateRoute path="/profile-page" component={ProfilePage} />
             <PrivateRouteToForm
               path="/appraisal-form"
               component={AppraisalForm}
+              // render={props => <AppraisalForm {...props} />}
             />
             <Route path="/result" component={ResultsPage} />
           </div>

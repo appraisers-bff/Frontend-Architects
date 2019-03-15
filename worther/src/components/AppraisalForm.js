@@ -17,7 +17,7 @@ import {
   Col
 } from "reactstrap";
 
-import bgImg from "../images/form-house.jpg";
+// import bgImg from "../images/form-house.jpg";
 
 //Styling used styled-components
 // const BGContainer = styled.div`
@@ -54,8 +54,8 @@ const H1Style = styled.h1`
 
 //In-line styling
 const btn = { backgroundColor: "#95813B", border: "none" };
-const poolStyle = { marginTop: "30px" };
 
+//add props.user_id instead of 1 hard code
 class AppraisalForm extends React.Component {
   constructor(props) {
     super(props);
@@ -67,11 +67,9 @@ class AppraisalForm extends React.Component {
         zip: "",
         bed: 1,
         bath: 1,
-        stories: 1,
-        garage: 1,
         sqft: "",
-        pool: false,
-        user_id: props.user_id
+        year: "",
+        user_id: this.props.user_id
       },
       updating: false
     };
@@ -101,20 +99,15 @@ class AppraisalForm extends React.Component {
     this.props.history.push("/result");
   };
 
-
   updateHomeAppraisal = () => {
     this.setState({
       ...this.state,
       homeInputs: {
-        address: this.props.currentHouse.address,
-        
+        address: this.props.currentHouse.address
       },
       updating: true
     });
-  }
-
-
-  
+  };
 
   submitAppraisalUpdate = e => {
     e.preventDefault();
@@ -126,35 +119,36 @@ class AppraisalForm extends React.Component {
         zip: "",
         bed: 1,
         bath: 1,
-        stories: 1,
-        garage: 1,
         sqft: "",
-        pool: false,
+        year: "",
         user_id: this.props.user_id
       },
       updating: false
     });
-  }
+  };
 
   render() {
     return (
-      <BGContainer>
-        <Container>
-          <H1Style>Discover your home's worth today</H1Style>
-          <Form
-            className="d-flex flex-column justify-content-center"
-            onSubmit={(this.state.updating ? this.submitAppraisalUpdate : this.calcAppraisal)}
-          >
-            <FormGroup>
-              <Label for="address">Address</Label>
-              <Input
-                type="text"
-                name="address"
-                id="address"
-                placeholder="1234 Main St"
-                onChange={this.handleChange}
-              />
-            </FormGroup>
+      <Container>
+        <H1Style>Discover your home's worth today</H1Style>
+        <Form
+          className="d-flex flex-column justify-content-center"
+          onSubmit={
+            this.state.updating
+              ? this.submitAppraisalUpdate
+              : this.calcAppraisal
+          }
+        >
+          <FormGroup>
+            <Label for="address">Address</Label>
+            <Input
+              type="text"
+              name="address"
+              id="address"
+              placeholder="1234 Main St"
+              onChange={this.handleChange}
+            />
+          </FormGroup>
 
           <Row form>
             <Col md={6}>
@@ -244,63 +238,26 @@ class AppraisalForm extends React.Component {
             </Col>
             <Col md={3}>
               <FormGroup>
-                <Label for="stories">Stories</Label>
-                <Input
-                  type="select"
-                  name="stories"
-                  id="stories"
-                  onChange={this.handleChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Input>
-              </FormGroup>
-            </Col>
-            <Col md={3}>
-              <FormGroup>
-                <Label for="garage">Garage Cars</Label>
-                <Input
-                  type="select"
-                  name="garage"
-                  id="garage"
-                  onChange={this.handleChange}
-                >
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                </Input>
-              </FormGroup>
-            </Col>
-          </Row>
-
-          <Row form>
-            <Col md={6}>
-              <FormGroup>
                 <Label for="sqft">Square Feet</Label>
                 <Input
                   type="number"
                   name="sqft"
                   id="sqft"
-                  placeholder="Enter square feet"
+                  placeholder="Enter sqft"
                   onChange={this.handleChange}
                 />
               </FormGroup>
             </Col>
-
             <Col md={3}>
-              <FormGroup style={poolStyle}>
+              <FormGroup>
+                <Label for="year">Year</Label>
                 <Input
-                  type="checkbox"
-                  name="pool"
-                  id="pool"
-                  onChange={this.handleSelect}
+                  type="number"
+                  name="year"
+                  id="year"
+                  placeholder="Enter year"
+                  onChange={this.handleChange}
                 />
-                <Label for="pool">Pool</Label>
               </FormGroup>
             </Col>
           </Row>
@@ -322,7 +279,6 @@ class AppraisalForm extends React.Component {
           <Button style={btn}>CALCULATE</Button>
         </Form>
       </Container>
-      // </BGContainer>
     );
   }
 }
