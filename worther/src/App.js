@@ -114,7 +114,7 @@ class App extends Component {
                 ) : (
                   <>
                     <NavItem>
-                      <Link to="/signup" style={navLink}>
+                      <Link to="/" style={navLink}>
                         SIGN UP
                       </Link>
                     </NavItem>
@@ -132,7 +132,7 @@ class App extends Component {
             {/* 
           <Route path="/appraisal-form" component={AppraisalForm} /> */}
             <Route path="/login" component={LoginPage} />
-            <Route path="/signup" component={SignupPage} />
+            <Route exact path="/" component={SignupPage} />
             <PrivateRoute path="/profile-page" component={ProfilePage} />
             <PrivateRouteToForm
               path="/appraisal-form"
