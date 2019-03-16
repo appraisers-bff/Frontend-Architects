@@ -10,25 +10,25 @@ const HouseListDiv = styled.div`
 `;
 
 const HousesList = props => {
-  let houses = props.houses;
-  if(houses.length === 0) {
-    homes = <div className="homes">
-      houses.map(house => (
-      <House
-        key={house.id}
-        house={house}
-        setUpdateForm={props.setUpdateForm}
-      />
-      ))
-    </div>
+  if(props.houses.length !== 0) {
+    return (
+      <HouseListDiv>
+        props.houses.map(house => (
+        <House
+          key={house.id}
+          house={house}
+          setUpdateForm={props.setUpdateForm}
+        />
+        ))
+      </HouseListDiv>
+    )
   } else {
-    homes = <h2>No homes saved currently.</h2>
+    return (
+      <HouseListDiv>
+        <h2>No homes saved currently.</h2>
+      </HouseListDiv>
+    )
   }
-  return (
-    <HouseListDiv>
-      {houses}
-    </HouseListDiv>
-  );
 };
 
 export default HousesList;
