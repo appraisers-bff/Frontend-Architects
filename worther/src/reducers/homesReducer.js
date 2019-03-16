@@ -76,7 +76,6 @@ const homesReducer = (state = initialState, action) => {
     case DELETE_HOME_SUCCESS:
       return {
         ...state,
-        houses: action.payload,
         deletingHouse: false
       };
 
