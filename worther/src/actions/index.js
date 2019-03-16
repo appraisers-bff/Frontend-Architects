@@ -145,6 +145,7 @@ export const deleteHomeFromServer = homeId => dispatch => {
         payload: response.data
       });
     })
+    .then( () => getHomes(homeId)(dispatch) )
     .catch(error => {
       dispatch({
         type: DELETE_HOME_FAILURE,
