@@ -11,7 +11,7 @@ const HouseListDiv = styled.div`
 
 const HousesList = props => {
   let houses;
-  if(houses.length === 0) {
+  if(houses === undefined || houses.length === 0) {
     houses = <h2>No homes saved currently.</h2>
   } else {
     houses = props.houses.map(house => (
