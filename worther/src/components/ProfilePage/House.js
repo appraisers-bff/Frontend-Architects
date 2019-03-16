@@ -75,16 +75,22 @@ const CardContainer = styled.div`
   margin: 20px;
 `;
 
-const House = props => {
+class House extends React.Component {
+
+deleteHouse = (e, houseId) => {
+  e.preventDefault();
+  this.props.deleteHomeFromServer(houseId);
+}
+  
   return (
     <CardContainer>
       <Card>
         <CardHeader tag="h6">
-          {props.house.address}
+          {this.props.house.address}
           {"\n"}
-          {props.house.city}, {props.house.state} {props.house.zip}
+          {this.props.house.city}, {this.props.house.state} {this.props.house.zip}
           <Button
-            onClick={() => props.deleteHomeFromServer(props.house.id)}
+            onClick=(e => this.deleteHouse(e, this.props.house.id)}
             close
           />{" "}
         </CardHeader>
@@ -92,30 +98,30 @@ const House = props => {
           <CardTitle>
             <p>
               <strong>Fair Market Value: </strong>
-              {props.house.fmv}
+              {this.props.house.fmv}
             </p>
             <p>
               <strong>Zestimate: </strong>
-              {props.house.zestimate}
+              {this.props.house.zestimate}
             </p>
           </CardTitle>
           <CardText>
             <strong>Year Built: </strong>
-            {props.house.year}
+            {this.props.house.year}
           </CardText>
           <CardText>
             <strong>Square Feet: </strong>
-            {props.house.sqft}
+            {this.props.house.sqft}
           </CardText>
           <CardText>
             <strong>Beds: </strong>
-            {props.house.bed}
+            {this.props.house.bed}
           </CardText>
           <CardText>
             <strong>Baths: </strong>
-            {props.house.bath}
+            {this.props.house.bath}
           </CardText>
-          <Button onClick={e => this.setUpdateForm(props.house)}>
+          <Button onClick={e => this.setUpdateForm(this.props.house)}>
             Update Estimate
           </Button>
         </CardBody>
