@@ -11,9 +11,7 @@ const HouseListDiv = styled.div`
 
 const HousesList = props => {
   let houses;
-  if(houses === undefined || houses.length === 0) {
-    houses = <h2>No homes saved currently.</h2>
-  } else {
+  if(houses) {
     houses = props.houses.map(house => (
       <House
         key={house.id}
@@ -21,6 +19,8 @@ const HousesList = props => {
         setUpdateForm={props.setUpdateForm}
       />
     ))
+  } else {
+    houses = <h2>No homes saved currently.</h2>
   }
   return (
     <HouseListDiv>
