@@ -140,7 +140,10 @@ export const deleteHomeFromServer = homeId => dispatch => {
   return axios
     .delete(`https://worther.herokuapp.com/api/house/${homeId}`)
     .then(response => {
-      console.log("Delete Response", response);
+      dispatch({
+        type: DELETE_HOME_SUCCESS,
+        payload: response.data
+      });
     })
     .catch(error => {
       dispatch({
