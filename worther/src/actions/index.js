@@ -135,7 +135,7 @@ export const passHomeToUpdate = house => {
   };
 };
 
-export const deleteHomeFromServer = homeId => dispatch => {
+export const deleteHomeFromServer = (homeId, userId) => dispatch => {
   dispatch({ type: DELETE_HOME_START });
   return axios
     .delete(`https://worther.herokuapp.com/api/house/${homeId}`)
@@ -145,7 +145,7 @@ export const deleteHomeFromServer = homeId => dispatch => {
         payload: response.data
       });
     })
-    .then( () => getHomes(homeId)(dispatch) )
+    .then( () => getHomes(userId)(dispatch) )
     .catch(error => {
       dispatch({
         type: DELETE_HOME_FAILURE,
