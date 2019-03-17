@@ -77,98 +77,70 @@ const CardContainer = styled.div`
 
 class House extends React.Component {
 
-deleteHouse = (e, houseId) => {
-  e.preventDefault();
-  this.props.deleteHomeFromServer(houseId);
-}
-  
-  return (
-    <CardContainer>
-      <Card>
-        <CardHeader tag="h6">
-          {this.props.house.address}
-          {"\n"}
-          {this.props.house.city}, {this.props.house.state} {this.props.house.zip}
-          <Button
-            onClick=(e => this.deleteHouse(e, this.props.house.id)}
-            close
-          />{" "}
-        </CardHeader>
-        <CardBody>
-          <CardTitle>
-            <p>
-              <strong>Fair Market Value: </strong>
-              {this.props.house.fmv}
-            </p>
-            <p>
-              <strong>Zestimate: </strong>
-              {this.props.house.zestimate}
-            </p>
-          </CardTitle>
-          <CardText>
-            <strong>Year Built: </strong>
-            {this.props.house.year}
-          </CardText>
-          <CardText>
-            <strong>Square Feet: </strong>
-            {this.props.house.sqft}
-          </CardText>
-          <CardText>
-            <strong>Beds: </strong>
-            {this.props.house.bed}
-          </CardText>
-          <CardText>
-            <strong>Baths: </strong>
-            {this.props.house.bath}
-          </CardText>
-          <Button onClick={e => this.setUpdateForm(this.props.house)}>
-            Update Estimate
-          </Button>
-        </CardBody>
-        <CardFooter className="text-muted" />
-      </Card>
-    </CardContainer>
+  deleteHouse = (e, houseId, userId) => {
+    e.preventDefault();
+    console.log(`USER_ID: ${userId}`);
+    this.props.deleteHomeFromServer(houseId, userId);
+  }
 
-    // <HouseDiv>
-    //   <ImgDiv>
-    //     <img src={unsplashimg.src} alt={unsplashimg.alt} />
-    //   </ImgDiv>
-    //   <DoubleBorder>
-    //     <DeleteBtn>X</DeleteBtn>
-    //   </DoubleBorder>
-    //   <HouseContentDiv>
-    //     <p>
-    //       <strong>{props.house.address}</strong>
-    //     </p>
-    //     <p>
-    //       <strong>
-    //         {props.house.city}, {props.house.state} {props.house.zip}
-    //       </strong>
-    //     </p>
-    //     <p>
-    //       <strong>Square Feet: </strong>
-    //       {props.house.sqft}
-    //     </p>
-    //     <p>
-    //       <strong>Beds: </strong>
-    //       {props.house.bed}
-    //     </p>
-    //     <p>
-    //       <strong>Baths: </strong>
-    //       {props.house.bath}
-    //     </p>
-    //   </HouseContentDiv>
-    //   <UpdateBtn
-    //     to="/appraisal-form"
-    //     onClick={() => props.passHomeToUpdate(props.house)}
-    //   >
-    //     Update
-    //   </UpdateBtn>
-    // </HouseDiv>
-  );
+  render() {
+    return (
+      <CardContainer>
+        <Card>
+          <CardHeader tag="h6">
+            {this.props.house.address}
+            {"\n"}
+            {this.props.house.city}, {this.props.house.state} {this.props.house.zip}
+            <Button
+              onClick={e => this.deleteHouse(e, this.props.house.id, this.props.user_id)}
+              close
+            />{" "}
+          </CardHeader>
+          <CardBody>
+            <CardTitle>
+              <p>
+                <strong>Fair Market Value: </strong>
+                {this.props.house.fmv}
+              </p>
+              <p>
+                <strong>Zestimate: </strong>
+                {this.props.house.zestimate}
+              </p>
+            </CardTitle>
+            <CardText>
+              <strong>Year Built: </strong>
+              {this.props.house.year}
+            </CardText>
+            <CardText>
+              <strong>Square Feet: </strong>
+              {this.props.house.sqft}
+            </CardText>
+            <CardText>
+              <strong>Beds: </strong>
+              {this.props.house.bed}
+            </CardText>
+            <CardText>
+              <strong>Baths: </strong>
+              {this.props.house.bath}
+            </CardText>
+            <Button onClick={e => this.setUpdateForm(this.props.house)}>
+              Update Estimate
+            </Button>
+          </CardBody>
+          <CardFooter className="text-muted" />
+        </Card>
+      </CardContainer>
+    );
+  }
 };
 
+const mapStateToProps = state => {
+  return {
+    user_id: state.form.user_id
+  }
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   { passHomeToUpdate, deleteHomeFromServer }
 )(House);

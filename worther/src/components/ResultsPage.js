@@ -67,7 +67,7 @@ class ResultsPage extends React.Component {
       <Result>
         <ResultHeader>
           We estimate your home is <br />
-          worth <Estimate>${this.props.form.house.fmv}</Estimate>
+          worth <Estimate>${(this.props.form.house.fmv ? this.props.form.house.fmv : 0 )}</Estimate>
         </ResultHeader>
 
         <img src="https://source.unsplash.com/1000x475/?house" alt="house" />
